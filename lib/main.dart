@@ -88,10 +88,29 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: [
                                   Stack(
                                     children: [
+                                      // Image
                                       Image.asset("assets/images/AuchanAveiro.jpg", fit: BoxFit.cover, width: 250, height: 100),
+                                      // Image's gradient
+                                      Positioned(child: 
+                                        Container(
+                                          width: 250,
+                                          height: 100,
+                                          decoration: const BoxDecoration(
+                                            color: Colors.white,
+                                            gradient: LinearGradient(
+                                              begin: AlignmentDirectional.bottomCenter,
+                                              end: AlignmentDirectional.topCenter,
+                                              colors: [
+                                                Color.fromARGB(120, 0, 0, 0),
+                                                Colors.transparent
+                                              ],
+                                              stops: [0.0, 0.7]
+                                            )
+                                          )
+                                        )
+                                      ),
                                       Positioned(
-                                        top: 5,  
-                                        right: 5,
+                                        right: 0,  
                                         child: IconButton.filled(
                                           padding: const EdgeInsets.all(3),
                                           constraints: const BoxConstraints(maxHeight: 36),
@@ -105,12 +124,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                           highlightColor: Colors.transparent,
                                         )
                                       ),
+                                      
+                                      
                                       Positioned(
-                                        top: 5,
-                                        left: 5,
+                                        top: 13.5,
+                                        left: 9,
                                         child: Container(
-                                          margin: const EdgeInsets.all(40),
-                                          width: 115,
+                                          padding: const EdgeInsets.symmetric(horizontal: 5),
                                           height: 20,
                                           alignment: Alignment.center,
                                           decoration: BoxDecoration(
@@ -127,7 +147,27 @@ class _MyHomePageState extends State<MyHomePage> {
                                           ),
                                         )
 
-                                      )
+                                      ),
+
+                                      const Positioned(
+                                        left: 10,
+                                        bottom: 5,
+                                        child: Row(
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 25,
+                                              backgroundImage: AssetImage("assets/images/auchan_logo.jpg"),
+                                            ),
+                                            SizedBox(width: 10),
+                                            Text("Auchan - Aveiro", style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 18,
+                                              color: Colors.white
+                                            )),
+                                          ],
+                                        ),
+                                      ),
+                                      
 
                                       
                                     ]
