@@ -86,7 +86,52 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Image.asset("assets/images/AuchanAveiro.jpg", fit: BoxFit.cover, width: 250, height: 100),
+                                  Stack(
+                                    children: [
+                                      Image.asset("assets/images/AuchanAveiro.jpg", fit: BoxFit.cover, width: 250, height: 100),
+                                      Positioned(
+                                        top: 5,  
+                                        right: 5,
+                                        child: IconButton.filled(
+                                          padding: const EdgeInsets.all(3),
+                                          constraints: const BoxConstraints(maxHeight: 36),
+                                          onPressed: () { debugPrint('Favorite tapped.'); },
+                                          icon: const Icon(
+                                            Icons.favorite_border_outlined,
+                                            color: Colors.white
+                                          ),
+                                          // remove splash effect
+                                          splashColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                        )
+                                      ),
+                                      Positioned(
+                                        top: 5,
+                                        left: 5,
+                                        child: Container(
+                                          margin: const EdgeInsets.all(40),
+                                          width: 115,
+                                          height: 20,
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFF4AAEFD), //blue
+                                            borderRadius: BorderRadius.circular(45),
+                                          ),
+                                          child: const Text(
+                                            '3 Surprise Bags',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        )
+
+                                      )
+
+                                      
+                                    ]
+                                  ),
                                   const Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                                     child: Column(
@@ -125,7 +170,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 ],
                                               )
                                             ),
-                                            Align(alignment: Alignment.centerRight, child: Text("2"))
+                                            Align(alignment: Alignment.centerRight, child:
+                                              Text("4,99 €", style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 17,
+                                                color: Color.fromARGB(255, 3, 44, 4)
+                                              )),
+                                            )
                                           ],
                                         )
                                       ],
