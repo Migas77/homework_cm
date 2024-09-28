@@ -33,10 +33,116 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints){
-        return const Column(
-          children: [
-            Text('App Reset'),
-          ],
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: 
+              Column(
+                children: [
+                  const Text('Glória, Aveiro'),
+                  const SearchBar(
+                      padding: WidgetStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16.0)),
+                      leading: Icon(Icons.search),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Recomendações", style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                      ), ),
+                      RichText(
+                        text: const TextSpan(
+                          children: [
+                            TextSpan(text: "Ver tudo ", style: TextStyle(
+                              color: Color.fromARGB(255, 70, 2, 187),
+                              fontWeight: FontWeight.bold,
+                            )),
+                            WidgetSpan(
+                              alignment: PlaceholderAlignment.middle,
+                              child: Icon(Icons.chevron_right, size: 20)
+                            ),
+                          ],
+                        ),
+                      ),
+                    ]
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Card(
+                        clipBehavior: Clip.hardEdge,
+                        child: InkWell(
+                          splashColor: const Color(0x1F0000FF), // Equivalent to Colors.blue.withAlpha(30)
+                          onTap: () {
+                            debugPrint('Card tapped.');
+                          },
+                          child: 
+                            SizedBox(
+                              width: 250,
+                              height: 177,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Image.asset("assets/images/AuchanAveiro.jpg", fit: BoxFit.cover, width: 250, height: 100),
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      children: [
+                                        Text("Suprise Bag", style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        )),
+                                        Text("Recolher hoje 21:30 - 22:00", style: TextStyle(
+                                          color: Color.fromARGB(255, 112, 112, 112),
+                                          fontSize: 12,
+                                        )),
+                                        Row(
+                                          children: [
+                                            Expanded(child: 
+                                              Row(
+                                                children: [
+                                                  Icon(Icons.star, color: Colors.green, size: 18,),
+                                                  SizedBox(width: 5),
+                                                  Text("4,7", style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14,
+                                                  )),
+                                                  SizedBox(
+                                                    height: 18,
+                                                    child: VerticalDivider(
+                                                      thickness: 0.35,
+                                                      color: Colors.grey,
+                                                    )
+                                                  ),
+                                                  Text("4,1 Km", style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14,
+                                                  )),
+                                                ],
+                                              )
+                                            ),
+                                            Align(alignment: Alignment.centerRight, child: Text("2"))
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              )
+                            ),
+                        )
+                        
+                      )
+                    ],  
+                  ),
+                  
+                ],
+              ),
+          )
         );
       }),
     );
