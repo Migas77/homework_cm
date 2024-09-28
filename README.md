@@ -1,6 +1,6 @@
 # too_good_to_go_clone
 
-A new Flutter project.
+A new Flutter project for the CM homework.
 
 ## Getting Started
 
