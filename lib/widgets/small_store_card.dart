@@ -17,6 +17,7 @@ class SmallStoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 6),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         splashColor: const Color(0x1F0000FF), // Equivalent to Colors.blue.withAlpha(30)

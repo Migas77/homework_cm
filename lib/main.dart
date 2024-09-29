@@ -51,12 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints){
-        return SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: screen,
-          )
-        );
+        return SafeArea(child: screen);
       }),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
