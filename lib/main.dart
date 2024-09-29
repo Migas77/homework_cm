@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:too_good_to_go_clone/widgets/home_page.dart';
+import 'package:too_good_to_go_clone/screens/home_screen.dart';
+import 'package:too_good_to_go_clone/screens/search_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,23 +34,28 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget page;
+    Widget screen;
     switch (_selectedIndex) {
       case 0:
-        page = const HomePage();
+        screen = const HomeScreen();
       case 1:
-        page = const Placeholder();
+        screen = const SearchScreen();
       case 2:
-        page = const Placeholder();
+        screen = const Placeholder();
       case 3:
-        page = const Placeholder();
+        screen = const Placeholder();
       default:
         throw UnimplementedError('no widget for $_selectedIndex');
     }
 
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints){
-        return page;
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: screen,
+          )
+        );
       }),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
