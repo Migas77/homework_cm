@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: 
+            child:
               Column(
                 children: [
                   const Text('Glória, Aveiro'),
@@ -70,20 +70,31 @@ class _MyHomePageState extends State<MyHomePage> {
                     ]
                   ),
                   const SizedBox(height: 10),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SmallStoreCard(
-                        storeName: "Auchan - Aveiro",
-                        storeImagePath: "assets/images/AuchanAveiro.jpg",
-                        storeLogoPath: "assets/images/AuchanLogo.jpg",
-                        availableSurpriseBags: 3
-                      ),
-                    ],  
+                  SizedBox(
+                    height: 185,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: const [
+                        SmallStoreCard(
+                            storeName: "Auchan 1 - Aveiro",
+                            storeImagePath: "assets/images/AuchanAveiro.jpg",
+                            storeLogoPath: "assets/images/AuchanLogo.jpg",
+                            availableSurpriseBags: 3
+                        ),
+                        SmallStoreCard(
+                            storeName: "Auchan 2 - Aveiro",
+                            storeImagePath: "assets/images/AuchanAveiro.jpg",
+                            storeLogoPath: "assets/images/AuchanLogo.jpg",
+                            availableSurpriseBags: 3
+                        ),
+                      ],
+                    ),
                   ),
-                  
+
                 ],
               ),
+
+
           )
         );
       }),
