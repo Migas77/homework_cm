@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:too_good_to_go_clone/screens/home_screen.dart';
 import 'package:too_good_to_go_clone/screens/search_screen.dart';
+import 'package:too_good_to_go_clone/widgets/stores_map.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         screen = const SearchScreen();
       case 2:
-        screen = const Placeholder();
+        screen = const StoresMap();
       case 3:
         screen = const Placeholder();
       default:

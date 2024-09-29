@@ -15,8 +15,6 @@ enum OrderedBy { relevancia, distancia, preco }
 
 class _SearchScreenState extends State<SearchScreen> {
   bool positive = false;
-  double _sheetPosition = 0.5;
-  final double _dragSensitivity = 600;
 
   @override
   Widget build(BuildContext context){
@@ -70,7 +68,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   TextSpan(
                     text: "Relevância ",
                     recognizer: TapGestureRecognizer()..onTap = () {
-                      /* showModalBottomSheet(context: context, builder: (BuildContext context){
+                      showModalBottomSheet(context: context, builder: (BuildContext context){
                         return Padding(
                           padding: const EdgeInsets.all(18.0),
                           child: SizedBox(
@@ -126,7 +124,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                           ),
                         );
-                      }); */
+                      });
                     },
                     style: const TextStyle(
                       color: Color.fromARGB(255, 70, 2, 187),
