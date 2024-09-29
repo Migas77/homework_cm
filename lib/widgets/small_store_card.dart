@@ -9,7 +9,6 @@ class SmallStoreCard extends StatelessWidget {
     required this.availableSurpriseBags,
   });
 
-  
   final String storeName;
   final String storeImagePath;
   final String storeLogoPath;
@@ -68,8 +67,6 @@ class SmallStoreCard extends StatelessWidget {
                       highlightColor: Colors.transparent,
                     )
                   ),
-                  
-                  
                   Positioned(
                     top: 13.5,
                     left: 9,
@@ -92,7 +89,6 @@ class SmallStoreCard extends StatelessWidget {
                     )
 
                   ),
-
                   Positioned(
                     left: 10,
                     bottom: 5,
@@ -111,9 +107,6 @@ class SmallStoreCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  
-
-                  
                 ]
               ),
               const Padding(

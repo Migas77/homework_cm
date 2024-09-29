@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:too_good_to_go_clone/widgets/small_store_card.dart';
+import 'package:too_good_to_go_clone/widgets/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,75 +29,59 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    Widget page;
+    switch (_selectedIndex) {
+      case 0:
+        page = const HomePage();
+      case 1:
+        page = const Placeholder();
+      case 2:
+        page = const Placeholder();
+      case 3:
+        page = const Placeholder();
+      default:
+        throw UnimplementedError('no widget for $_selectedIndex');
+    }
+
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints){
-        return SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child:
-              Column(
-                children: [
-                  const Text('Glória, Aveiro'),
-                  const SearchBar(
-                      padding: WidgetStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16.0)),
-                      leading: Icon(Icons.search),
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text("Recomendações", style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                      ), ),
-                      RichText(
-                        text: const TextSpan(
-                          children: [
-                            TextSpan(text: "Ver tudo ", style: TextStyle(
-                              color: Color.fromARGB(255, 70, 2, 187),
-                              fontWeight: FontWeight.bold,
-                            )),
-                            WidgetSpan(
-                              alignment: PlaceholderAlignment.middle,
-                              child: Icon(Icons.chevron_right, size: 20)
-                            ),
-                          ],
-                        ),
-                      ),
-                    ]
-                  ),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    height: 185,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: const [
-                        SmallStoreCard(
-                            storeName: "Auchan 1 - Aveiro",
-                            storeImagePath: "assets/images/AuchanAveiro.jpg",
-                            storeLogoPath: "assets/images/AuchanLogo.jpg",
-                            availableSurpriseBags: 3
-                        ),
-                        SmallStoreCard(
-                            storeName: "Auchan 2 - Aveiro",
-                            storeImagePath: "assets/images/AuchanAveiro.jpg",
-                            storeLogoPath: "assets/images/AuchanLogo.jpg",
-                            availableSurpriseBags: 3
-                        ),
-                      ],
-                    ),
-                  ),
-
-                ],
-              ),
-
-
-          )
-        );
+        return page;
       }),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore_outlined),
+            label: 'Descobrir',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined),
+            label: 'Pesquisar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: 'Favoritos',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: 'Perfil',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        type: BottomNavigationBarType.fixed, // disable zoom in animation
+        selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Colors.black,
+      ),
     );
   }
 }
+
+
