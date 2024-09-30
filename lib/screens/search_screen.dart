@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'package:flutter/rendering.dart';
+import 'package:too_good_to_go_clone/widgets/big_store_card.dart';
 
 class SearchScreen extends StatefulWidget{
   const SearchScreen({
@@ -11,18 +13,19 @@ class SearchScreen extends StatefulWidget{
   State<SearchScreen> createState() => _SearchScreenState();
 }
 
-enum OrderedBy { relevancia, distancia, preco }
+enum OrderedBy { relevancia, distancia, preco, classificacao }
 
 class _SearchScreenState extends State<SearchScreen> {
   bool positive = false;
+  OrderedBy _orderBy = OrderedBy.relevancia;
 
   @override
   Widget build(BuildContext context){
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-          child: Column(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Column(
+        children: [
+          Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SearchBar(
@@ -91,38 +94,46 @@ class _SearchScreenState extends State<SearchScreen> {
                                           color: Colors.grey,
                                         ),
                                         RadioListTile<OrderedBy>(
-                                          title: const Text('AM'),
+                                          title: const Text('Relevância'),
                                           controlAffinity: ListTileControlAffinity.trailing,
-                                          groupValue: OrderedBy.relevancia,
+                                          groupValue: _orderBy,
                                           value: OrderedBy.relevancia,
-                                          onChanged:(OrderedBy? value) { },
+                                          onChanged:(OrderedBy? value) { setState(() {
+                                            _orderBy = OrderedBy.relevancia;
+                                          });},
                                           contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
                                         ),
                                         RadioListTile<OrderedBy>(
-                                          title: const Text('AM'),
+                                          title: const Text('Distância'),
                                           controlAffinity: ListTileControlAffinity.trailing,
-                                          groupValue: OrderedBy.relevancia,
-                                          value: OrderedBy.relevancia,
-                                          onChanged:(OrderedBy? value) { },
+                                          groupValue: _orderBy,
+                                          value: OrderedBy.distancia,
+                                          onChanged:(OrderedBy? value) { setState(() {
+                                            _orderBy = OrderedBy.distancia;
+                                          });},
                                           contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
                                         ),
                                         RadioListTile<OrderedBy>(
-                                          title: const Text('AM'),
+                                          title: const Text('Preço'),
                                           controlAffinity: ListTileControlAffinity.trailing,
-                                          groupValue: OrderedBy.relevancia,
-                                          value: OrderedBy.relevancia,
-                                          onChanged:(OrderedBy? value) { },
+                                          groupValue: _orderBy,
+                                          value: OrderedBy.preco,
+                                          onChanged:(OrderedBy? value) { setState(() {
+                                            _orderBy = OrderedBy.preco;
+                                          });},
                                           contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
                                         ),
                                         RadioListTile<OrderedBy>(
-                                          title: const Text('AM'),
+                                          title: const Text('Classificação'),
                                           controlAffinity: ListTileControlAffinity.trailing,
-                                          groupValue: OrderedBy.relevancia,
-                                          value: OrderedBy.relevancia,
-                                          onChanged:(OrderedBy? value) { },
+                                          groupValue: _orderBy,
+                                          value: OrderedBy.classificacao,
+                                          onChanged:(OrderedBy? value) { setState(() {
+                                            _orderBy = OrderedBy.classificacao;
+                                          });},
                                           contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
                                         ),
-          
+
                                       ],
                                     ),
                                   ),
@@ -144,13 +155,23 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ]
-              )
+              ),
+              Row(
+                children: [
+                  const BigStoreCard(
+                    storeName: "Auchan 1 - Aveiro",
+                    storeImagePath: "assets/images/AuchanAveiro.jpg",
+                    storeLogoPath: "assets/images/AuchanLogo.jpg",
+                    availableSurpriseBags: 3
+                  ),
+                ],
+              ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
