@@ -158,18 +158,45 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ]
               ),
-              Row(
-                children: [
-                  const BigStoreCard(
+            ],
+          ),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(8),
+              children: <Widget>[
+                const BigStoreCard(
                     storeName: "Auchan 1 - Aveiro",
                     storeImagePath: "assets/images/AuchanAveiro.jpg",
                     storeLogoPath: "assets/images/AuchanLogo.jpg",
                     availableSurpriseBags: 3
-                  ),
-                ],
-              ),
-            ],
-          ),
+                ),
+                const BigStoreCard(
+                    storeName: "Auchan 1 - Aveiro",
+                    storeImagePath: "assets/images/AuchanAveiro.jpg",
+                    storeLogoPath: "assets/images/AuchanLogo.jpg",
+                    availableSurpriseBags: 3
+                ),
+                const BigStoreCard(
+                    storeName: "Auchan 1 - Aveiro",
+                    storeImagePath: "assets/images/AuchanAveiro.jpg",
+                    storeLogoPath: "assets/images/AuchanLogo.jpg",
+                    availableSurpriseBags: 3
+                ),
+                const BigStoreCard(
+                    storeName: "Auchan 1 - Aveiro",
+                    storeImagePath: "assets/images/AuchanAveiro.jpg",
+                    storeLogoPath: "assets/images/AuchanLogo.jpg",
+                    availableSurpriseBags: 3
+                ),
+                const BigStoreCard(
+                    storeName: "Auchan 1 - Aveiro",
+                    storeImagePath: "assets/images/AuchanAveiro.jpg",
+                    storeLogoPath: "assets/images/AuchanLogo.jpg",
+                    availableSurpriseBags: 3
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

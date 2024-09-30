@@ -24,6 +24,7 @@ class BigStoreCard extends StatelessWidget {
         maxHeight: 200,
       ),
       child: Card(
+        margin: const EdgeInsets.symmetric(vertical: 6),
         clipBehavior: Clip.hardEdge,
         child: InkWell(
           splashColor: const Color(0x1F0000FF), // Equivalent to Colors.blue.withAlpha(30)
