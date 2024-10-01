@@ -32,22 +32,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
+  List<Widget> _screens = [
+    HomeScreen(),
+    SearchScreen(),
+    StoresMap(),
+    Placeholder()
+  ];
 
   @override
   Widget build(BuildContext context) {
-    Widget screen;
-    switch (_selectedIndex) {
-      case 0:
-        screen = const HomeScreen();
-      case 1:
-        screen = const SearchScreen();
-      case 2:
-        screen = const StoresMap();
-      case 3:
-        screen = const Placeholder();
-      default:
-        throw UnimplementedError('no widget for $_selectedIndex');
-    }
+    Widget screen = _screens[_selectedIndex];
 
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints){
