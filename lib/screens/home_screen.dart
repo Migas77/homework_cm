@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:too_good_to_go_clone/widgets/small_store_card.dart';
 
+import '../data/stores.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
@@ -50,24 +52,13 @@ class HomeScreen extends StatelessWidget {
         ),
         SizedBox(
           height: 185,
-          child: ListView(
+          child: ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
             scrollDirection: Axis.horizontal,
-            children: const [
-              SizedBox(width: 6),
-              SmallStoreCard(
-                  storeName: "Auchan 1 - Aveiro",
-                  storeImagePath: "assets/images/AuchanAveiro.jpg",
-                  storeLogoPath: "assets/images/AuchanLogo.jpg",
-                  availableSurpriseBags: 3
-              ),
-              SmallStoreCard(
-                  storeName: "Auchan 2 - Aveiro",
-                  storeImagePath: "assets/images/AuchanAveiro.jpg",
-                  storeLogoPath: "assets/images/AuchanLogo.jpg",
-                  availableSurpriseBags: 3
-              ),
-              SizedBox(width: 6),
-            ],
+            itemCount: stores.length,
+            itemBuilder: (BuildContext context, int index) {
+              return SmallStoreCard(store: stores[index]);
+            },
           ),
         ),
       ],

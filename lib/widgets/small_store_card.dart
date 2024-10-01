@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../data/stores.dart';
+
 class SmallStoreCard extends StatelessWidget {
   const SmallStoreCard({
     super.key, 
-    required this.storeName,
-    required this.storeImagePath,
-    required this.storeLogoPath,
-    required this.availableSurpriseBags,
+    required this.store
   });
 
-  final String storeName;
-  final String storeImagePath;
-  final String storeLogoPath;
-  final int availableSurpriseBags;
+  final Store store;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +29,7 @@ class SmallStoreCard extends StatelessWidget {
               Stack(
                 children: [
                   // Image
-                  Image.asset(storeImagePath, fit: BoxFit.cover, width: 250, height: 100),
+                  Image.asset(store.storeImagePath, fit: BoxFit.cover, width: 250, height: 100),
                   // Image's gradient
                   Positioned(child: 
                     Container(
@@ -80,7 +76,7 @@ class SmallStoreCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(45),
                       ),
                       child: Text(
-                        '$availableSurpriseBags Surprise Bag${availableSurpriseBags > 1 ? 's' : ''}',
+                        '${store.availableSurpriseBags} Surprise Bag${store.availableSurpriseBags > 1 ? 's' : ''}',
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
@@ -97,10 +93,10 @@ class SmallStoreCard extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 25,
-                          backgroundImage: AssetImage(storeLogoPath),
+                          backgroundImage: AssetImage(store.logoImagePath),
                         ),
                         const SizedBox(width: 10),
-                        Text(storeName, style: const TextStyle(
+                        Text(store.name, style: const TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 18,
                           color: Colors.white
@@ -110,16 +106,16 @@ class SmallStoreCard extends StatelessWidget {
                   ),
                 ]
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text("Suprise Bag", style: TextStyle(
+                    const Text("Suprise Bag", style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     )),
-                    Text("Recolher hoje 21:30 - 22:00", style: TextStyle(
+                    const Text("Recolher hoje 21:30 - 22:00", style: TextStyle(
                       color: Color.fromARGB(255, 112, 112, 112),
                       fontSize: 12,
                     )),
@@ -128,20 +124,20 @@ class SmallStoreCard extends StatelessWidget {
                         Expanded(child: 
                           Row(
                             children: [
-                              Icon(Icons.star, color: Colors.green, size: 18,),
-                              SizedBox(width: 5),
-                              Text("4,7", style: TextStyle(
+                              const Icon(Icons.star, color: Colors.green, size: 18,),
+                              const SizedBox(width: 5),
+                              Text(store.rating.toString().replaceFirst(".", ","), style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
                               )),
-                              SizedBox(
+                              const SizedBox(
                                 height: 18,
                                 child: VerticalDivider(
                                   thickness: 0.35,
                                   color: Colors.grey,
                                 )
                               ),
-                              Text("4,1 Km", style: TextStyle(
+                              const Text("4,1 Km", style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
                               )),
@@ -149,7 +145,7 @@ class SmallStoreCard extends StatelessWidget {
                           )
                         ),
                         Align(alignment: Alignment.centerRight, child:
-                          Text("4,99 €", style: TextStyle(
+                          Text("${store.price.toStringAsFixed(2).replaceFirst(".", ",")} €", style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 17,
                             color: Color.fromARGB(255, 3, 44, 4)

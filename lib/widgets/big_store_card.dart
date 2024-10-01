@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../data/stores.dart';
+
 class BigStoreCard extends StatelessWidget {
   const BigStoreCard({
-    super.key, 
-    required this.storeName,
-    required this.storeImagePath,
-    required this.storeLogoPath,
-    required this.availableSurpriseBags,
+    super.key,
+    required this.store
   });
 
-  final String storeName;
-  final String storeImagePath;
-  final String storeLogoPath;
-  final int availableSurpriseBags;
+  final Store store;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +33,7 @@ class BigStoreCard extends StatelessWidget {
                 Stack(
                     children: [
                       // Image
-                      Image.asset(storeImagePath, fit: BoxFit.cover, width: 250, height: 100),
+                      Image.asset(store.storeImagePath, fit: BoxFit.cover, width: 250, height: 100),
                       // Image's gradient
                       Positioned(child:
                       Container(
@@ -84,7 +80,7 @@ class BigStoreCard extends StatelessWidget {
                               borderRadius: BorderRadius.circular(45),
                             ),
                             child: Text(
-                              '$availableSurpriseBags Surprise Bag${availableSurpriseBags > 1 ? 's' : ''}',
+                              '${store.availableSurpriseBags} Surprise Bag${store.availableSurpriseBags > 1 ? 's' : ''}',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
@@ -101,10 +97,10 @@ class BigStoreCard extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               radius: 25,
-                              backgroundImage: AssetImage(storeLogoPath),
+                              backgroundImage: AssetImage(store.logoImagePath),
                             ),
                             const SizedBox(width: 10),
-                            Text(storeName, style: const TextStyle(
+                            Text(store.name, style: const TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 18,
                                 color: Colors.white
