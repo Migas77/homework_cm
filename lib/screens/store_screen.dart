@@ -261,7 +261,6 @@ class StoreScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   const Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -283,6 +282,48 @@ class StoreScreen extends StatelessWidget {
               thickness: 0.4,
               color: Colors.grey,
             ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Align(alignment: Alignment.centerLeft, child: Text("O que podes receber", style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ))),
+                  const SizedBox(height: 3),
+                  Align(alignment: Alignment.centerLeft, child: Text(store.description, style: const TextStyle(
+                    fontSize: 15,
+                  ))),
+                  const SizedBox(height: 3),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 7),
+                    width: 50,
+                    height: 20,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(45),
+                    ),
+                    child: const Text('Refeições',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ],
+              )
+            ),
+
+            const Divider(
+              height: 0,
+              thickness: 0.4,
+              color: Colors.grey,
+            ),
+
 
           ],
         );

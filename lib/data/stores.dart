@@ -9,6 +9,7 @@ class Store {
   String closingRetrievalHours;
   String address;
   String mealType;
+  String description;
   List<Highlight> top3Highlights;
   int availableSurpriseBags;
   int last6monthsReviewCount;
@@ -24,6 +25,7 @@ class Store {
     required this.closingRetrievalHours,
     required this.address,
     required this.mealType,
+    required this.description,
     required this.top3Highlights,
     required this.availableSurpriseBags,
     required this.last6monthsReviewCount,
@@ -52,6 +54,7 @@ List<Store> stores = [
       closingRetrievalHours: "20:00",
       address: "R. Dom Manuel Barbuda e Vasconcelos",
       mealType: "Mercearia",
+      description: "Auchan é uma cadeia de hipermercados francesa, com presença em vários países da Europa, Ásia...",
       top3Highlights: [hQualityPriceRatio, hDeliciousFood, hFriendlyStaff],
       availableSurpriseBags: 4,
       last6monthsReviewCount: 150,
@@ -67,6 +70,7 @@ List<Store> stores = [
       closingRetrievalHours: "22:00",
       address: "Rua São Sebastião n 31",
       mealType: "Menu do dia",
+      description: "Saladas + é um restaurante de comida saudável, com uma grande variedade de saladas, wraps, sumos naturais e sobremesas.",
       top3Highlights: [hQualityPriceRatio, hDeliciousFood, hFriendlyStaff],
       availableSurpriseBags: 4,
       last6monthsReviewCount: 290,
@@ -82,6 +86,7 @@ List<Store> stores = [
       closingRetrievalHours: "23:15",
       address: "R. Direita de Aradas 103, 3810-005 Aveiro, Portugal",
       mealType: "Jantar",
+      description: "Wok Home é um restaurante de comida asiática, com uma grande variedade de pratos de wok, sushi, sashimi e sobremesas.",
       top3Highlights: [hQualityPriceRatio, hGoodQuantity, hFastRetrieval],
       availableSurpriseBags: 1,
       last6monthsReviewCount: 213,
@@ -97,6 +102,7 @@ List<Store> stores = [
       closingRetrievalHours: "21:00",
       address: "Via Cândido Teles 7, 3830-126 Ílhavo, Portugal",
       mealType: "Pastelaria",
+      description: "Cidadella é uma pastelaria com uma grande variedade de bolos, doces, salgados e bebidas.",
       top3Highlights: [hQualityPriceRatio, hGoodQuantity, hFastRetrieval],
       availableSurpriseBags: 3,
       last6monthsReviewCount: 178,
@@ -112,6 +118,7 @@ List<Store> stores = [
       closingRetrievalHours: "15:00",
       address: "Centro Comercial Oita, 2.ºpiso, loja 406, Av. Dr. Lourenço Peixinho Loja 406, 3800-140 Aveiro, Portugal",
       mealType: "Refeição",
+      description: "Comphy é um restaurante de comida saudável, com uma grande variedade de pratos saudáveis, sumos naturais e sobremesas.",
       top3Highlights: [hQualityPriceRatio, hFriendlyStaff, hDeliciousFood],
       availableSurpriseBags: 4,
       last6monthsReviewCount: 33,
@@ -127,6 +134,7 @@ List<Store> stores = [
       closingRetrievalHours: "23:00",
       address: "R. do Batalhão de Caçadores 10 2.07, 3810-064 Aveiro, Portugal",
       mealType: "Surprise Bag Média: Pizza à fatia e/ou complementos (Jantar)",
+      description: "Pizza Hut é uma cadeia de restaurantes de fast food especializada em pizza. A Pizza Hut é uma das maiores cadeias de restaurantes de fast food do mundo, com mais de 18.000 restaurantes em todo o mundo.",
       top3Highlights: [hQualityPriceRatio, hDeliciousFood, hFriendlyStaff],
       availableSurpriseBags: 1,
       last6monthsReviewCount: 15,
@@ -142,6 +150,7 @@ List<Store> stores = [
       closingRetrievalHours: "22:00",
       address: "R. do Batalhão de Caçadores 10 Store 2.2a, 3810-064 Aveiro, Portugal",
       mealType: "Refeição pequena (excepto saladas)",
+      description: "Vitaminas é um restaurante de comida saudável, com uma grande variedade de pratos saudáveis, sumos naturais e sobremesas.",
       top3Highlights: [hQualityPriceRatio, hFriendlyStaff, hDeliciousFood],
       availableSurpriseBags: 4,
       last6monthsReviewCount: 47,
