@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/stores.dart';
+import '../screens/store_screen.dart';
 
 class SmallStoreCard extends StatelessWidget {
   const SmallStoreCard({
@@ -18,7 +19,11 @@ class SmallStoreCard extends StatelessWidget {
       child: InkWell(
         splashColor: const Color(0x1F0000FF), // Equivalent to Colors.blue.withAlpha(30)
         onTap: () {
-          debugPrint('Card tapped.');
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => StoreScreen(store: store)
+            )
+          );
         },
         child: SizedBox(
           width: 250,
