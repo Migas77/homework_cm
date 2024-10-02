@@ -215,9 +215,9 @@ class StoreScreen extends StatelessWidget {
                             ],
                           )
                         )
-          
-          
-          
+
+
+
                       ],
                     ),
                   ],
@@ -228,7 +228,7 @@ class StoreScreen extends StatelessWidget {
                 thickness: 0.4,
                 color: Colors.grey,
               ),
-          
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
                 child: Row(
@@ -243,29 +243,30 @@ class StoreScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    // Text overflow isn't working
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(children: [
-                            Text(store.address, style: const TextStyle(
+
+                    Expanded(
+                      flex: 5,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(store.address,
                               overflow: TextOverflow.ellipsis,
-                              fontSize: 15,
-                              color: Colors.green
-                            ))
-                          ]),
-                          const Row(children: [
-                            Text("Mais informações sobre a loja", style: TextStyle(
+                              style: const TextStyle(
+                                fontSize: 15,
+                                color: Colors.green
+                            )),
+                            const Text("Mais informações sobre a loja", style: TextStyle(
                               fontSize: 13,
                               color: Colors.grey
-                            ))
-                          ]),
-                        ],
+                            )),
+                          ],
+                        ),
                       ),
                     ),
                     const Expanded(
+                      // default flex 1
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -280,13 +281,13 @@ class StoreScreen extends StatelessWidget {
                   ],
                 ),
               ),
-          
+
               const Divider(
                 height: 0,
                 thickness: 0.4,
                 color: Colors.grey,
               ),
-          
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
                 child: Column(
@@ -322,13 +323,13 @@ class StoreScreen extends StatelessWidget {
                   ],
                 )
               ),
-          
+
               const Divider(
                 height: 0,
                 thickness: 0.4,
                 color: Colors.grey,
               ),
-          
+
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
                 child: Row(
@@ -346,13 +347,13 @@ class StoreScreen extends StatelessWidget {
                   ],
                 ),
               ),
-          
+
               const Divider(
                 height: 0,
                 thickness: 0.4,
                 color: Colors.grey,
               ),
-          
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
                 child: Center(
@@ -431,7 +432,7 @@ class StoreScreen extends StatelessWidget {
                 ),
               ),
 
-              Divider(
+              const Divider(
                 height: 0,
                 thickness: 0.4,
                 color: Colors.grey,
@@ -473,7 +474,7 @@ class StoreScreen extends StatelessWidget {
 
               const SizedBox(height: 11)
 
-              
+
             ],
           ),
         );
