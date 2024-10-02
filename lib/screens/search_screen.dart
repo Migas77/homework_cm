@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-import 'package:flutter/rendering.dart';
 import 'package:too_good_to_go_clone/screens/search_screen_list.dart';
 import 'package:too_good_to_go_clone/screens/search_screen_map.dart';
 
@@ -24,7 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context){
     List<Widget> children = [
       if (isMap)
-        Expanded(child: SearchScreenMap()),
+        SearchScreenMap(),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Column(
