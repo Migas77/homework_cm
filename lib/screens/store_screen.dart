@@ -99,7 +99,133 @@ class StoreScreen extends StatelessWidget {
                 ),
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        flex: 3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  const WidgetSpan(
+                                      alignment: PlaceholderAlignment.middle,
+                                      child: Icon(
+                                        Icons.shopping_bag_outlined,
+                                        size: 20,
+                                        color: Colors.green,
+                                      )
+                                  ),
+                                  TextSpan(text: " ${store.mealType}", style: const TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black
+                                  ))
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  const WidgetSpan(
+                                      alignment: PlaceholderAlignment.middle,
+                                      child: Icon(
+                                        Icons.star,
+                                        size: 20,
+                                        color: Colors.green,
+                                      )
+                                  ),
+                                  TextSpan(text: " ${store.rating}", style: const TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black
+                                  )),
+                                  TextSpan(text: " (${store.last6monthsReviewCount})", style: const TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey
+                                  ))
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Row(
+                              children: [
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      const WidgetSpan(
+                                          alignment: PlaceholderAlignment.middle,
+                                          child: Icon(
+                                            Icons.schedule_outlined,
+                                            size: 20,
+                                            color: Colors.green,
+                                          )
+                                      ),
+                                      TextSpan(text: " Recolhe: ${store.openingRetrievalHours} - ${store.closingRetrievalHours} ", style: const TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.black
+                                      ))
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 7),
+                                  height: 20,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF4AAEFD), //blue
+                                    borderRadius: BorderRadius.circular(45),
+                                  ),
+                                  child: const Text('Hoje',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text("${store.oldPrice.toStringAsFixed(2).replaceFirst(".", ",")} €", style: const TextStyle(
+                                decoration: TextDecoration.lineThrough,
+                                fontSize: 15,
+                                color: Colors.grey,
+                                decorationColor: Colors.grey
+                            )),
+                            Text("${store.price.toStringAsFixed(2).replaceFirst(".", ",")} €", style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.green,
+                                fontWeight: FontWeight.w800
+                            ))
+                          ],
+                        )
+                      )
 
+
+
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const Divider(
+              height: 0,
+              thickness: 0.4,
+              color: Colors.grey,
+            ),
           ],
         );
       }),
