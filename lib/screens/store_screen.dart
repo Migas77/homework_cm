@@ -226,6 +226,64 @@ class StoreScreen extends StatelessWidget {
               thickness: 0.4,
               color: Colors.grey,
             ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+              child: Row(
+                children: [
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.location_on_outlined,
+                        color: Colors.green,
+                        size: 23,
+                      )
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(children: [
+                          Text(store.address, style: const TextStyle(
+                            fontSize: 15,
+                            color: Colors.green
+                          ))
+                        ]),
+                        const Row(children: [
+                          Text("Mais informações sobre a loja", style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey
+                          ))
+                        ]),
+                      ],
+                    ),
+                  ),
+
+                  Expanded(
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Icon(
+                          Icons.chevron_right_outlined,
+                          color: Colors.green,
+                          size: 23,
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+
+            const Divider(
+              height: 0,
+              thickness: 0.4,
+              color: Colors.grey,
+            ),
+
           ],
         );
       }),
