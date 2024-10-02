@@ -262,8 +262,8 @@ class StoreScreen extends StatelessWidget {
                     ),
                   ),
 
-                  Expanded(
-                    child: const Column(
+                  const Expanded(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Icon(
