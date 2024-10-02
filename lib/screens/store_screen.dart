@@ -292,30 +292,55 @@ class StoreScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ))),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: 6),
                   Align(alignment: Alignment.centerLeft, child: Text(store.description, style: const TextStyle(
                     fontSize: 15,
                   ))),
-                  const SizedBox(height: 3),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 7),
-                    width: 50,
-                    height: 20,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(45),
-                    ),
-                    child: const Text('Refeições',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                        color: Colors.white,
+                  const SizedBox(height: 10),
+                  IntrinsicWidth(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 7),
+                      height: 20,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(45),
+                      ),
+                      child: const Text('Refeições',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   )
                 ],
               )
+            ),
+
+            const Divider(
+              height: 0,
+              thickness: 0.4,
+              color: Colors.grey,
+            ),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Ingredientes e alergénios", style: TextStyle(
+                    color: Colors.green,
+                    fontSize: 16,
+                  )),
+                  Icon(
+                    Icons.chevron_right_outlined,
+                    color: Colors.green,
+                    size: 23,
+                  )
+                ],
+              ),
             ),
 
             const Divider(
