@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:too_good_to_go_clone/data/stores.dart';
-import 'package:too_good_to_go_clone/logic/app_state.dart';
+import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
 import 'package:too_good_to_go_clone/screens/stores_list.dart';
 
 class FavoritesScreen extends StatelessWidget {
@@ -9,7 +8,7 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MyAppState appState = context.watch<MyAppState>();
+    FavoriteStoresState appState = context.watch<FavoriteStoresState>();
 
     return Column(
       children: [

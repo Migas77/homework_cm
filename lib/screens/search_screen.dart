@@ -2,7 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:provider/provider.dart';
-import 'package:too_good_to_go_clone/logic/app_state.dart';
+import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
+import 'package:too_good_to_go_clone/providers/stock_stores_state.dart';
 import 'package:too_good_to_go_clone/screens/stores_list.dart';
 import 'package:too_good_to_go_clone/screens/search_screen_map.dart';
 
@@ -23,7 +24,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context){
-    MyAppState appState = context.watch<MyAppState>();
+    StockStoresState stockStoresState = context.watch<StockStoresState>();
 
     List<Widget> children = [
       if (isMap)
@@ -168,7 +169,7 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       if (!isMap)
-        Expanded(child: StoresList(stores: appState.allStores))
+        Expanded(child: StoresList(stores: stockStoresState.stores))
     ];
 
     return isMap ? Stack(children: children) : Column(children: children);

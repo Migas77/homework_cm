@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
 import '../data/stores.dart';
-import '../logic/app_state.dart';
 import '../screens/store_screen.dart';
 
 class SmallStoreCard extends StatelessWidget {
@@ -15,7 +14,7 @@ class SmallStoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MyAppState appState = context.watch<MyAppState>();
+    FavoriteStoresState appState = context.watch<FavoriteStoresState>();
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 6),

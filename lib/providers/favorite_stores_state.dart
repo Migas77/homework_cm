@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:too_good_to_go_clone/data/stores.dart';
 
-class MyAppState with ChangeNotifier {
+class FavoriteStoresState with ChangeNotifier {
 
-  final List<Store> allStores = allStoresList;
   List<Store> favoriteStores = [];
 
   void toggleFavorite(Store store) {
@@ -20,3 +19,7 @@ class MyAppState with ChangeNotifier {
   }
 
 }
+
+// lista de lojas favoritas
+// lista de todas as lojas
+// lista de lojas com stock

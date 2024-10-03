@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:too_good_to_go_clone/logic/app_state.dart';
+import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
+import 'package:too_good_to_go_clone/providers/stock_stores_state.dart';
 import 'package:too_good_to_go_clone/screens/favorites_screen.dart';
 import 'package:too_good_to_go_clone/screens/home_screen.dart';
 import 'package:too_good_to_go_clone/screens/search_screen.dart';
-import 'package:too_good_to_go_clone/widgets/stores_map.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +15,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => StockStoresState()),
+        ChangeNotifierProvider(create: (context) => FavoriteStoresState()),
+      ],
+
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
