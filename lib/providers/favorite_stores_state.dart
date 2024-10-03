@@ -19,7 +19,3 @@ class FavoriteStoresState with ChangeNotifier {
   }
 
 }
-
-// lista de lojas favoritas
-// lista de todas as lojas
-// lista de lojas com stock
