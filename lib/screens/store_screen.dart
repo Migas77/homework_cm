@@ -44,7 +44,7 @@ class StoreScreen extends StatelessWidget {
                           top: 40,
                           child: IconButton.filledTonal(
                               icon: Icon(
-                                appState.isFavorite(store) ? Icons.favorite :
+                                appState.isFavoriteStore(store) ? Icons.favorite :
                                 Icons.favorite_border_outlined
                               ),
                               onPressed: () => appState.toggleFavorite(store),

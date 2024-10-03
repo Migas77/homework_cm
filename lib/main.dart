@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:too_good_to_go_clone/logic/app_state.dart';
+import 'package:too_good_to_go_clone/screens/favorites_screen.dart';
 import 'package:too_good_to_go_clone/screens/home_screen.dart';
 import 'package:too_good_to_go_clone/screens/search_screen.dart';
 import 'package:too_good_to_go_clone/widgets/stores_map.dart';
@@ -40,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const SearchScreen(),
-    const StoresMap(),
+    const FavoritesScreen(),
     const Placeholder()
   ];
 

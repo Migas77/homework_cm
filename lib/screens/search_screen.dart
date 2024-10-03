@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-import 'package:too_good_to_go_clone/screens/search_screen_list.dart';
+import 'package:provider/provider.dart';
+import 'package:too_good_to_go_clone/logic/app_state.dart';
+import 'package:too_good_to_go_clone/screens/stores_list.dart';
 import 'package:too_good_to_go_clone/screens/search_screen_map.dart';
 
 class SearchScreen extends StatefulWidget{
@@ -16,11 +18,13 @@ class SearchScreen extends StatefulWidget{
 enum OrderedBy { relevancia, distancia, preco, classificacao }
 
 class _SearchScreenState extends State<SearchScreen> {
-  bool isMap = true;
+  bool isMap = false;
   OrderedBy _orderBy = OrderedBy.relevancia;
 
   @override
   Widget build(BuildContext context){
+    MyAppState appState = context.watch<MyAppState>();
+
     List<Widget> children = [
       if (isMap)
         SearchScreenMap(),
@@ -164,7 +168,7 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       if (!isMap)
-        Expanded(child: SearchScreenList())
+        Expanded(child: StoresList(stores: appState.allStores))
     ];
 
     return isMap ? Stack(children: children) : Column(children: children);

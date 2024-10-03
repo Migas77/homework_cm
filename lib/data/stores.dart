@@ -45,7 +45,7 @@ class Store {
 }
 
 // create a list of Stores
-List<Store> stores = [
+List<Store> allStoresList = [
   Store(
       name: "Auchan - Aveiro",
       storeImagePath: "assets/images/AuchanAveiro.jpg",

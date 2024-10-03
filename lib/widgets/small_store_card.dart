@@ -65,7 +65,7 @@ class SmallStoreCard extends StatelessWidget {
                       constraints: const BoxConstraints(maxHeight: 36),
                       onPressed: () => appState.toggleFavorite(store),
                       icon: Icon(
-                        appState.isFavorite(store) ? Icons.favorite : Icons.favorite_border_outlined,
+                        appState.isFavoriteStore(store) ? Icons.favorite : Icons.favorite_border_outlined,
                         color: Colors.white
                       ),
                       // remove splash effect

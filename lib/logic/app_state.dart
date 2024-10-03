@@ -3,19 +3,20 @@ import 'package:too_good_to_go_clone/data/stores.dart';
 
 class MyAppState with ChangeNotifier {
 
-  List<Store> favorites = [];
+  final List<Store> allStores = allStoresList;
+  List<Store> favoriteStores = [];
 
   void toggleFavorite(Store store) {
-    if (favorites.contains(store)) {
-      favorites.remove(store);
+    if (favoriteStores.contains(store)) {
+      favoriteStores.remove(store);
     } else {
-      favorites.add(store);
+      favoriteStores.add(store);
     }
     notifyListeners();
   }
 
-  bool isFavorite(Store store) {
-    return favorites.contains(store);
+  bool isFavoriteStore(Store store) {
+    return favoriteStores.contains(store);
   }
 
 }

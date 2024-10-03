@@ -93,6 +93,7 @@ class _StoresMapState extends State<StoresMap> {
                 _googleMapController = controller;
               },
               myLocationEnabled: true,
+              myLocationButtonEnabled: false,
             ),
             Positioned(
               right: 10,

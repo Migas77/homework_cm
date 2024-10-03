@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:too_good_to_go_clone/screens/store_screen.dart';
 
 import '../data/stores.dart';
 import '../logic/app_state.dart';
@@ -29,7 +30,11 @@ class BigStoreCard extends StatelessWidget {
         child: InkWell(
           splashColor: const Color(0x1F0000FF), // Equivalent to Colors.blue.withAlpha(30)
           onTap: () {
-            debugPrint('Card tapped.');
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (context) => StoreScreen(store: store)
+                )
+            );
           },
           child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -64,7 +69,7 @@ class BigStoreCard extends StatelessWidget {
                             constraints: const BoxConstraints(maxHeight: 36),
                             onPressed: () => appState.toggleFavorite(store),
                             icon: Icon(
-                              appState.isFavorite(store) ? Icons.favorite : Icons.favorite_border_outlined,
+                              appState.isFavoriteStore(store) ? Icons.favorite : Icons.favorite_border_outlined,
                               color: Colors.white
                             ),
                             // remove splash effect

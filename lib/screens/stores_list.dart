@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import '../data/stores.dart';
 import '../widgets/big_store_card.dart';
 
-class SearchScreenList extends StatelessWidget {
+class StoresList extends StatelessWidget {
+
+  const StoresList({super.key, required this.stores});
+
+  final List<Store> stores;
 
   @override
   Widget build(BuildContext context) {

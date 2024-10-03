@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:too_good_to_go_clone/logic/app_state.dart';
 import 'package:too_good_to_go_clone/widgets/small_store_card.dart';
 
 import '../data/stores.dart';
@@ -10,6 +12,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyAppState appState = context.watch<MyAppState>();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -55,9 +59,9 @@ class HomeScreen extends StatelessWidget {
           child: ListView.builder(
             padding: const EdgeInsets.symmetric(horizontal: 6),
             scrollDirection: Axis.horizontal,
-            itemCount: stores.length,
+            itemCount: appState.allStores.length,
             itemBuilder: (BuildContext context, int index) {
-              return SmallStoreCard(store: stores[index]);
+              return SmallStoreCard(store: appState.allStores[index]);
             },
           ),
         ),
