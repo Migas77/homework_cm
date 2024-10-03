@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../data/stores.dart';
+import '../logic/app_state.dart';
 import '../screens/store_screen.dart';
 
 class SmallStoreCard extends StatelessWidget {
@@ -13,6 +15,8 @@ class SmallStoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyAppState appState = context.watch<MyAppState>();
+
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 6),
       clipBehavior: Clip.hardEdge,
@@ -59,9 +63,9 @@ class SmallStoreCard extends StatelessWidget {
                     child: IconButton.filled(
                       padding: const EdgeInsets.all(3),
                       constraints: const BoxConstraints(maxHeight: 36),
-                      onPressed: () { debugPrint('Favorite tapped.'); },
-                      icon: const Icon(
-                        Icons.favorite_border_outlined,
+                      onPressed: () => appState.toggleFavorite(store),
+                      icon: Icon(
+                        appState.isFavorite(store) ? Icons.favorite : Icons.favorite_border_outlined,
                         color: Colors.white
                       ),
                       // remove splash effect

@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:too_good_to_go_clone/logic/app_state.dart';
 
 import '../data/highlights.dart';
 import '../data/stores.dart';
@@ -11,6 +12,8 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyAppState appState = context.watch<MyAppState>();
+
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints){
         return Column(
@@ -40,10 +43,11 @@ class StoreScreen extends StatelessWidget {
                           right: 12,
                           top: 40,
                           child: IconButton.filledTonal(
-                              icon: const Icon(Icons.favorite_border_outlined),
-                              onPressed: (){
-                                debugPrint('Favorite tapped.');
-                              },
+                              icon: Icon(
+                                appState.isFavorite(store) ? Icons.favorite :
+                                Icons.favorite_border_outlined
+                              ),
+                              onPressed: () => appState.toggleFavorite(store),
                               style: IconButton.styleFrom(
                                 backgroundColor: Colors.white.withOpacity(0.7),
                               )

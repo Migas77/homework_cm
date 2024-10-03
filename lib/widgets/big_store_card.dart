@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../data/stores.dart';
+import '../logic/app_state.dart';
 
 class BigStoreCard extends StatelessWidget {
   const BigStoreCard({
@@ -12,6 +14,8 @@ class BigStoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyAppState appState = context.watch<MyAppState>();
+
     return ConstrainedBox(
       constraints: BoxConstraints(
         minWidth: MediaQuery.of(context).size.width - 24, // 24 being outer padding
@@ -58,10 +62,10 @@ class BigStoreCard extends StatelessWidget {
                           child: IconButton.filled(
                             padding: const EdgeInsets.all(3),
                             constraints: const BoxConstraints(maxHeight: 36),
-                            onPressed: () { debugPrint('Favorite tapped.'); },
-                            icon: const Icon(
-                                Icons.favorite_border_outlined,
-                                color: Colors.white
+                            onPressed: () => appState.toggleFavorite(store),
+                            icon: Icon(
+                              appState.isFavorite(store) ? Icons.favorite : Icons.favorite_border_outlined,
+                              color: Colors.white
                             ),
                             // remove splash effect
                             splashColor: Colors.transparent,
