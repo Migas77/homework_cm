@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:too_good_to_go_clone/animations/custom_page_route.dart';
 import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
 import 'package:too_good_to_go_clone/screens/store_screen.dart';
 import '../data/stores.dart';
+import '../main.dart';
 
 class BigStoreCard extends StatelessWidget {
   const BigStoreCard({
@@ -30,8 +32,9 @@ class BigStoreCard extends StatelessWidget {
           splashColor: const Color(0x1F0000FF), // Equivalent to Colors.blue.withAlpha(30)
           onTap: () {
             Navigator.of(context).push(
-                MaterialPageRoute(
-                    builder: (context) => StoreScreen(store: store)
+                MyCustomPageRoute(
+                    parent: context.findAncestorWidgetOfExactType<Scaffold>()!,
+                  builder: (context) => StoreScreen(store: store)
                 )
             );
           },
