@@ -109,7 +109,7 @@ class StoreScreen extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                       child: Column(
                         children: [
                           Row(
@@ -237,7 +237,7 @@ class StoreScreen extends StatelessWidget {
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                       child: Row(
                         children: [
                           const Column(
@@ -296,7 +296,7 @@ class StoreScreen extends StatelessWidget {
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -338,7 +338,7 @@ class StoreScreen extends StatelessWidget {
                     ),
 
                     const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -362,7 +362,7 @@ class StoreScreen extends StatelessWidget {
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                      padding: const EdgeInsets.symmetric(vertical: 14),
                       child: Center(
                         child: Column(
                           children: [
@@ -446,7 +446,7 @@ class StoreScreen extends StatelessWidget {
                     ),
 
                     const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -501,7 +501,7 @@ class StoreScreen extends StatelessWidget {
                 ],
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 15),
+                padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 16),
                 child: FilledButton(
                   onPressed: (){},
                   style: FilledButton.styleFrom(

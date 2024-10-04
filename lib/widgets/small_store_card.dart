@@ -18,7 +18,7 @@ class SmallStoreCard extends StatelessWidget {
     FavoriteStoresState appState = context.watch<FavoriteStoresState>();
 
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 6),
+      margin: const EdgeInsets.symmetric(horizontal: 7.6),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         splashColor: const Color(0x1F0000FF), // Equivalent to Colors.blue.withAlpha(30)

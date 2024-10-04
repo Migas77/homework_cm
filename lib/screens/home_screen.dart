@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
               const Text('Glória, Aveiro'),
@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
         SizedBox(
           height: 185,
           child: ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 9),
             scrollDirection: Axis.horizontal,
             itemCount: stockStoresState.stores.length,
             itemBuilder: (BuildContext context, int index) {

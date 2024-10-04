@@ -13,7 +13,7 @@ class FavoritesScreen extends StatelessWidget {
     return Column(
       children: [
         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text("Os teus favoritos", style: TextStyle(
