@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:too_good_to_go_clone/animations/custom_page_route.dart';
 import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
-import 'package:too_good_to_go_clone/screens/store_screen.dart';
+import '../animations/slide_animations.dart';
 import '../data/stores.dart';
-import '../main.dart';
+import '../screens/store_screen.dart';
 
 class BigStoreCard extends StatelessWidget {
   const BigStoreCard({
@@ -30,14 +29,7 @@ class BigStoreCard extends StatelessWidget {
         clipBehavior: Clip.hardEdge,
         child: InkWell(
           splashColor: const Color(0x1F0000FF), // Equivalent to Colors.blue.withAlpha(30)
-          onTap: () {
-            Navigator.of(context).push(
-                MyCustomPageRoute(
-                    parent: context.findAncestorWidgetOfExactType<Scaffold>()!,
-                  builder: (context) => StoreScreen(store: store)
-                )
-            );
-          },
+          onTap: () => Navigator.push(context, createRouteSlideIn(StoreScreen(store: store))),
           child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [

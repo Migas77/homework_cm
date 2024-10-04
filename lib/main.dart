@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:too_good_to_go_clone/animations/slide_animations.dart';
 import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
 import 'package:too_good_to_go_clone/providers/stock_stores_state.dart';
 import 'package:too_good_to_go_clone/screens/favorites_screen.dart';
@@ -27,7 +28,13 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const MyHomePage(),
+        initialRoute: '/',
+        onGenerateRoute: (settings) {
+          if (settings.name == '/') {
+            return createRouteSlideOut(const MyHomePage());
+          }
+          return null;
+        },
       )
     );
   }
