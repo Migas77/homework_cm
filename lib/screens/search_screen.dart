@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:too_good_to_go_clone/providers/stock_stores_state.dart';
 import 'package:too_good_to_go_clone/screens/stores_list.dart';
 import 'package:too_good_to_go_clone/screens/search_screen_map.dart';
+import 'package:too_good_to_go_clone/widgets/search_bar.dart';
 
 class SearchScreen extends StatefulWidget{
   const SearchScreen({
@@ -33,10 +34,7 @@ class _SearchScreenState extends State<SearchScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SearchBar(
-              padding: WidgetStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16.0)),
-              leading: Icon(Icons.search),
-            ),
+            const MySearchBar(),
             const SizedBox(height: 10),
             AnimatedToggleSwitch<bool>.size(
               current: isMap,
