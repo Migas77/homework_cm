@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:too_good_to_go_clone/animations/slide_animations.dart';
 import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
 import '../data/stores.dart';
+import '../mycolors/colors.dart';
 import '../screens/store_screen.dart';
 
 class SmallStoreCard extends StatelessWidget {
@@ -65,6 +66,9 @@ class SmallStoreCard extends StatelessWidget {
                       // remove splash effect
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
+                      style: IconButton.styleFrom(
+                        backgroundColor: Colors.black.withOpacity(0.3)
+                      )
                     )
                   ),
                   Positioned(
@@ -75,7 +79,7 @@ class SmallStoreCard extends StatelessWidget {
                       height: 20,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF4AAEFD), //blue
+                        color: MyColorPalette.lightYellow,
                         borderRadius: BorderRadius.circular(45),
                       ),
                       child: Text(
@@ -83,7 +87,7 @@ class SmallStoreCard extends StatelessWidget {
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
-                          color: Colors.white,
+                          color: MyColorPalette.darkGreen,
                         ),
                       ),
                     )
@@ -127,7 +131,7 @@ class SmallStoreCard extends StatelessWidget {
                         Expanded(child: 
                           Row(
                             children: [
-                              const Icon(Icons.star, color: Colors.green, size: 18,),
+                              const Icon(Icons.star, color: MyColorPalette.lightGreen, size: 18,),
                               const SizedBox(width: 5),
                               Text(store.rating.toString().replaceFirst(".", ","), style: const TextStyle(
                                 fontWeight: FontWeight.bold,

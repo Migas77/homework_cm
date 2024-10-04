@@ -4,6 +4,7 @@ import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
 
 import '../data/highlights.dart';
 import '../data/stores.dart';
+import '../mycolors/colors.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key, required this.store});
@@ -74,7 +75,7 @@ class StoreScreen extends StatelessWidget {
                             height: 20,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: const Color(0xFF4AAEFD), //blue
+                              color: MyColorPalette.lightYellow,
                               borderRadius: BorderRadius.circular(45),
                             ),
                             child: Text(
@@ -83,7 +84,7 @@ class StoreScreen extends StatelessWidget {
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
-                                color: Colors.white,
+                                color: MyColorPalette.darkGreen,
                               ),
                             ),
                           )
@@ -129,7 +130,7 @@ class StoreScreen extends StatelessWidget {
                                               child: Icon(
                                                 Icons.shopping_bag_outlined,
                                                 size: 20,
-                                                color: Colors.green,
+                                                color: MyColorPalette.darkGreen,
                                               )
                                           ),
                                           TextSpan(text: " ${store.mealType}", style: const TextStyle(
@@ -148,7 +149,7 @@ class StoreScreen extends StatelessWidget {
                                               child: Icon(
                                                 Icons.star,
                                                 size: 20,
-                                                color: Colors.green,
+                                                color: MyColorPalette.lightGreen,
                                               )
                                           ),
                                           TextSpan(text: " ${store.rating}", style: const TextStyle(
@@ -173,7 +174,7 @@ class StoreScreen extends StatelessWidget {
                                                   child: Icon(
                                                     Icons.schedule_outlined,
                                                     size: 20,
-                                                    color: Colors.green,
+                                                    color: MyColorPalette.darkGreen,
                                                   )
                                               ),
                                               TextSpan(text: " Recolhe: ${store.openingRetrievalHours} - ${store.closingRetrievalHours} ", style: const TextStyle(
@@ -188,7 +189,7 @@ class StoreScreen extends StatelessWidget {
                                           height: 20,
                                           alignment: Alignment.center,
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFF4AAEFD), //blue
+                                            color: MyColorPalette.darkGreen,
                                             borderRadius: BorderRadius.circular(45),
                                           ),
                                           child: const Text('Hoje',
@@ -216,7 +217,7 @@ class StoreScreen extends StatelessWidget {
                                     )),
                                     Text("${store.price.toStringAsFixed(2).replaceFirst(".", ",")} €", style: const TextStyle(
                                         fontSize: 18,
-                                        color: Colors.green,
+                                        color: MyColorPalette.darkGreen,
                                         fontWeight: FontWeight.w800
                                     ))
                                   ],
@@ -245,7 +246,7 @@ class StoreScreen extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.location_on_outlined,
-                                color: Colors.green,
+                                color: MyColorPalette.darkGreen,
                                 size: 23,
                               )
                             ],
@@ -262,7 +263,7 @@ class StoreScreen extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                       fontSize: 15,
-                                      color: Colors.green
+                                      color: MyColorPalette.darkGreen,
                                   )),
                                   const Text("Mais informações sobre a loja", style: TextStyle(
                                     fontSize: 13,
@@ -279,7 +280,7 @@ class StoreScreen extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.chevron_right_outlined,
-                                  color: Colors.green,
+                                  color: MyColorPalette.darkGreen,
                                   size: 23,
                                 )
                               ],
@@ -315,14 +316,14 @@ class StoreScreen extends StatelessWidget {
                               height: 20,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                color: Colors.grey,
+                                color: MyColorPalette.grey,
                                 borderRadius: BorderRadius.circular(45),
                               ),
                               child: const Text('Refeições',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 14,
-                                  color: Colors.white,
+                                  fontSize: 13.5,
+                                  color: Colors.black,
                                 ),
                               ),
                             ),
@@ -343,12 +344,12 @@ class StoreScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("Ingredientes e alergénios", style: TextStyle(
-                            color: Colors.green,
+                            color: MyColorPalette.darkGreen,
                             fontSize: 16,
                           )),
                           Icon(
                             Icons.chevron_right_outlined,
-                            color: Colors.green,
+                            color: MyColorPalette.darkGreen,
                             size: 23,
                           )
                         ],
@@ -380,7 +381,7 @@ class StoreScreen extends StatelessWidget {
                                       const Icon(
                                         Icons.star,
                                         size: 35,
-                                        color: Colors.green,
+                                        color: MyColorPalette.lightGreen,
                                       ),
                                       const SizedBox(width: 12),
                                       Text("${store.rating} / 5.0", style: const TextStyle(
@@ -401,7 +402,7 @@ class StoreScreen extends StatelessWidget {
                                   const Text("Top 3 destaques", style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
-                                    color: Colors.green
+                                    color: MyColorPalette.darkGreen,
                                   )),
                                   const SizedBox(height: 12),
                                   ...store.top3Highlights.map((Highlight highlight) =>
@@ -412,7 +413,7 @@ class StoreScreen extends StatelessWidget {
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.start,
                                             children: [
-                                              Icon(highlight.iconData, size: 32, color: Colors.green),
+                                              Icon(highlight.iconData, size: 32, color: MyColorPalette.darkGreen),
                                               const SizedBox(width: 18),
                                               Text(highlight.description, style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
@@ -505,7 +506,7 @@ class StoreScreen extends StatelessWidget {
                 child: FilledButton(
                   onPressed: (){},
                   style: FilledButton.styleFrom(
-                    backgroundColor: Colors.green
+                    backgroundColor: MyColorPalette.darkGreen,
                   ),
                   child: const Text("Reservar", style: TextStyle(
                     fontSize: 15.4,
