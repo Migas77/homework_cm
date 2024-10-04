@@ -32,7 +32,7 @@ class StoreScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 3),
                             icon: const Icon(Icons.arrow_back_ios_new),
                             onPressed: (){
-                              Navigator.of(context).pop();
+                              Navigator.pop(context);
                             },
                             style: IconButton.styleFrom(
                               backgroundColor: Colors.white.withOpacity(0.7),
