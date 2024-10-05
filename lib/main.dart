@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       ],
 
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Too Good To Go Clone',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,

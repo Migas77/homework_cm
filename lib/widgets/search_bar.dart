@@ -17,7 +17,7 @@ class MySearchBar extends StatelessWidget {
         shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
-            side: const BorderSide(color: Colors.grey, ), // Outline border
+            side: BorderSide(color: Colors.grey.withOpacity(0.5)),
           ),
         ),
         hintStyle: const WidgetStatePropertyAll(

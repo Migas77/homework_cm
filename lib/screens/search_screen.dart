@@ -7,6 +7,8 @@ import 'package:too_good_to_go_clone/screens/stores_list.dart';
 import 'package:too_good_to_go_clone/screens/search_screen_map.dart';
 import 'package:too_good_to_go_clone/widgets/search_bar.dart';
 
+import '../mycolors/colors.dart';
+
 class SearchScreen extends StatefulWidget{
   const SearchScreen({
     super.key, 
@@ -34,7 +36,56 @@ class _SearchScreenState extends State<SearchScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const MySearchBar(),
+            const SizedBox(height: 13),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Flexible(child: MySearchBar()),
+                const SizedBox(width: 10),
+                SizedBox(
+                  height: 37,
+                  width: 37,
+                  child: IconButton.outlined(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.tune_outlined,
+                      color: MyColorPalette.darkGreen,
+                      size: 20,
+                    ),
+                    style: IconButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      side: BorderSide(color: Colors.grey.withOpacity(0.5)),
+                      backgroundColor: Colors.white,
+                    ),
+
+                  ),
+                ),
+                const SizedBox(width: 10),
+                SizedBox(
+                  height: 37,
+                  width: 37,
+                  child: IconButton.outlined(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.location_on_outlined,
+                      color: MyColorPalette.darkGreen,
+                      size: 20,
+                    ),
+                    style: IconButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      side: BorderSide(color: Colors.grey.withOpacity(0.5)),
+                      backgroundColor: Colors.white,
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+
             const SizedBox(height: 10),
             AnimatedToggleSwitch<bool>.size(
               current: isMap,
