@@ -20,8 +20,8 @@ class BigStoreCard extends StatelessWidget {
 
     return ConstrainedBox(
       constraints: const BoxConstraints(
-        minHeight: 200,
-        maxHeight: 200,
+        minHeight: 214.2,
+        maxHeight: 214.2,
       ),
       child: Card(
         margin: const EdgeInsets.symmetric(vertical: 7.6),
@@ -35,25 +35,24 @@ class BigStoreCard extends StatelessWidget {
                 Stack(
                     children: [
                       // Image
-                      Image.asset(store.storeImagePath, fit: BoxFit.cover, width: 250, height: 100),
+                      Positioned.fill(child: Image.asset(store.storeImagePath, fit: BoxFit.cover)),
                       // Image's gradient
                       Positioned(child:
-                      Container(
-                          width: 250,
-                          height: 100,
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              gradient: LinearGradient(
-                                  begin: AlignmentDirectional.bottomCenter,
-                                  end: AlignmentDirectional.topCenter,
-                                  colors: [
-                                    Color.fromARGB(120, 0, 0, 0),
-                                    Colors.transparent
-                                  ],
-                                  stops: [0.0, 0.7]
-                              )
-                          )
-                      )
+                        Container(
+                            height: 112,
+                            decoration: const BoxDecoration(
+                                color: Colors.white,
+                                gradient: LinearGradient(
+                                    begin: AlignmentDirectional.bottomCenter,
+                                    end: AlignmentDirectional.topCenter,
+                                    colors: [
+                                      Color.fromARGB(120, 0, 0, 0),
+                                      Colors.transparent
+                                    ],
+                                    stops: [0.0, 0.7]
+                                )
+                            )
+                        )
                       ),
                       Positioned(
                           right: 0,
@@ -115,8 +114,9 @@ class BigStoreCard extends StatelessWidget {
                       ),
                     ]
                 ),
+                
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -129,29 +129,43 @@ class BigStoreCard extends StatelessWidget {
                         color: Color.fromARGB(255, 112, 112, 112),
                         fontSize: 12,
                       )),
+                      
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("${store.oldPrice.toStringAsFixed(2).replaceFirst(".", ",")} €", style: const TextStyle(
+                              height: 0.9,
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 15,
+                              color: Colors.grey,
+                              decorationColor: Colors.grey
+                          )),
+                        ],
+                      ),
+                      
                       Row(
                         children: [
                           Expanded(child:
-                          Row(
-                            children: [
-                              const Icon(Icons.star, color: MyColorPalette.lightGreen, size: 16,),
-                              const SizedBox(width: 5),
-                              Text(store.rating.toString().replaceFirst(".", ","), style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              )),
-                              const SizedBox(
-                                  height: 18,
-                                  child: VerticalDivider(
-                                    thickness: 0.35,
-                                    color: Colors.grey,
-                                  )
-                              ),
-                              const Text("4,1 Km", style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              )),
-                            ],
+                            Row(
+                              children: [
+                                const Icon(Icons.star, color: MyColorPalette.lightGreen, size: 16,),
+                                const SizedBox(width: 5),
+                                Text(store.rating.toString().replaceFirst(".", ","), style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                )),
+                                const SizedBox(
+                                    height: 18,
+                                    child: VerticalDivider(
+                                      thickness: 0.35,
+                                      color: Colors.grey,
+                                    )
+                                ),
+                                const Text("4,1 Km", style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                )),
+                              ],
                           )
                           ),
                           Align(alignment: Alignment.centerRight, child:

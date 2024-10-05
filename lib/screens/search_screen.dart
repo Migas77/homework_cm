@@ -128,7 +128,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         children: [
                           const TextSpan(text: "Ordenar por: ", style: TextStyle(
                             color: Colors.black,
-                            fontSize: 15.5,
+                            fontSize: 16,
                           )),
                           TextSpan(
                             text: "Relevância ",
@@ -143,7 +143,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             style: const TextStyle(
                               color: MyColorPalette.darkGreen,
                               fontWeight: FontWeight.bold,
-                              fontSize: 15.5,
+                              fontSize: 16,
                             ),
                           ),
                           WidgetSpan(
@@ -168,8 +168,11 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
         ],
       ),
-      if (!isMap)
+      if (!isMap) ...[
+        const SizedBox(height: 12),
         Expanded(child: StoresList(stores: stockStoresState.stores))
+      ]
+
     ];
 
     return isMap ? Stack(children: children) : Column(children: children);

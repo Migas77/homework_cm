@@ -25,7 +25,24 @@ class StoreScreen extends StatelessWidget {
                   children: [
                     Stack(
                       children: [
-                        Image.asset(store.storeImagePath, fit: BoxFit.cover, height: 228),
+                        Positioned.fill(child: Image.asset(store.storeImagePath, fit: BoxFit.cover)),
+                        Positioned(child:
+                          Container(
+                              height: 228,
+                              decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  gradient: LinearGradient(
+                                      begin: AlignmentDirectional.bottomCenter,
+                                      end: AlignmentDirectional.topCenter,
+                                      colors: [
+                                        Color.fromARGB(120, 0, 0, 0),
+                                        Colors.transparent
+                                      ],
+                                      stops: [0.0, 0.7]
+                                  )
+                              )
+                          )
+                        ),
                         Positioned(
                           left: 12,
                           top: 40,
