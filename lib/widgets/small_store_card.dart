@@ -26,7 +26,6 @@ class SmallStoreCard extends StatelessWidget {
         onTap: () => Navigator.push(context, createRouteSlideIn(StoreScreen(store: store))),
         child: SizedBox(
           width: 250,
-          height: 177,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -118,20 +117,22 @@ class SmallStoreCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text("Suprise Bag", style: TextStyle(
+                    const Text("Surprise Bag", style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     )),
-                    const Text("Recolher hoje 21:30 - 22:00", style: TextStyle(
+                    Text("Recolher hoje ${store.openingRetrievalHours} - ${store.closingRetrievalHours}", style: const TextStyle(
+                      height: 1.2,
                       color: Color.fromARGB(255, 112, 112, 112),
-                      fontSize: 12,
+                      fontSize: 11.5,
                     )),
+                    const SizedBox(height: 4),
                     Row(
                       children: [
                         Expanded(child: 
                           Row(
                             children: [
-                              const Icon(Icons.star, color: MyColorPalette.lightGreen, size: 18,),
+                              const Icon(Icons.star, color: MyColorPalette.lightGreen, size: 16,),
                               const SizedBox(width: 5),
                               Text(store.rating.toString().replaceFirst(".", ","), style: const TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -153,9 +154,9 @@ class SmallStoreCard extends StatelessWidget {
                         ),
                         Align(alignment: Alignment.centerRight, child:
                           Text("${store.price.toStringAsFixed(2).replaceFirst(".", ",")} €", style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w800,
                             fontSize: 17,
-                            color: Color.fromARGB(255, 3, 44, 4)
+                            color: MyColorPalette.darkGreen
                           )),
                         )
                       ],
