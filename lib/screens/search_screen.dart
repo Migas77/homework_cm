@@ -31,93 +31,96 @@ class _SearchScreenState extends State<SearchScreen> {
     List<Widget> children = [
       if (isMap)
         SearchScreenMap(),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 13),
-            Row(
-              mainAxisSize: MainAxisSize.min,
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            color: Colors.white.withOpacity(0.7),
+            child: Column(
               children: [
-                const Flexible(child: MySearchBar()),
-                const SizedBox(width: 10),
-                SizedBox(
-                  height: 37,
-                  width: 37,
-                  child: IconButton.outlined(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.tune_outlined,
-                      color: MyColorPalette.darkGreen,
-                      size: 20,
-                    ),
-                    style: IconButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                const SizedBox(height: 13),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Flexible(child: MySearchBar()),
+                    const SizedBox(width: 10),
+                    SizedBox(
+                      height: 37,
+                      width: 37,
+                      child: IconButton.outlined(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.tune_outlined,
+                          color: MyColorPalette.darkGreen,
+                          size: 20,
+                        ),
+                        style: IconButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          side: BorderSide(color: Colors.grey.withOpacity(0.5)),
+                          backgroundColor: Colors.white,
+                        ),
+
                       ),
-                      side: BorderSide(color: Colors.grey.withOpacity(0.5)),
-                      backgroundColor: Colors.white,
+                    ),
+                    const SizedBox(width: 10),
+                    SizedBox(
+                      height: 37,
+                      width: 37,
+                      child: IconButton.outlined(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.location_on_outlined,
+                          color: MyColorPalette.darkGreen,
+                          size: 20,
+                        ),
+                        style: IconButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          side: BorderSide(color: Colors.grey.withOpacity(0.5)),
+                          backgroundColor: Colors.white,
+                        ),
+                      ),
                     ),
 
-                  ),
+                  ],
                 ),
-                const SizedBox(width: 10),
-                SizedBox(
+                const SizedBox(height: 16),
+                AnimatedToggleSwitch<bool>.size(
                   height: 37,
-                  width: 37,
-                  child: IconButton.outlined(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.location_on_outlined,
-                      color: MyColorPalette.darkGreen,
-                      size: 20,
-                    ),
-                    style: IconButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      side: BorderSide(color: Colors.grey.withOpacity(0.5)),
-                      backgroundColor: Colors.white,
-                    ),
+                  current: isMap,
+                  values: const [false, true],
+                  iconOpacity: 1,
+                  indicatorSize: Size.fromWidth(MediaQuery.of(context).size.width),
+                  customIconBuilder: (context, local, global) => Text(
+                      local.value ? 'Mapa' : 'Lista',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.lerp(
+                          MyColorPalette.darkGreen, Colors.white, local.animationValue)
+                        )),
+                  iconAnimationType: AnimationType.onHover,
+                  style: ToggleStyle(
+                    indicatorColor: MyColorPalette.darkGreen,
+                    borderColor: Colors.transparent,
+                    borderRadius: BorderRadius.circular(10.0),
+                    backgroundColor: Colors.grey.withOpacity(0.2),
                   ),
+                  selectedIconScale: 1.0,
+                  onChanged: (b) => setState(() => isMap = b),
                 ),
-
+                const SizedBox(height: 5)
               ],
             ),
-
-            const SizedBox(height: 10),
-            AnimatedToggleSwitch<bool>.size(
-              current: isMap,
-              values: const [false, true],
-              iconOpacity: 0.2,
-              indicatorSize: Size.fromWidth(MediaQuery.of(context).size.width),
-              customIconBuilder: (context, local, global) => Text(
-                  local.value ? 'Mapa' : 'Lista',
-                  style: TextStyle(
-                      color: Color.lerp(
-                          Colors.black, Colors.white, local.animationValue))),
-              borderWidth: 4.0,
-              iconAnimationType: AnimationType.onHover,
-              style: ToggleStyle(
-                indicatorColor: Colors.teal,
-                borderColor: Colors.transparent,
-                borderRadius: BorderRadius.circular(10.0),
-                boxShadow: [
-                  const BoxShadow(
-                    color: Colors.black26,
-                    spreadRadius: 1,
-                    blurRadius: 2,
-                    offset: Offset(0, 1.5),
-                  ),
-                ],
-              ),
-              selectedIconScale: 1.0,
-              onChanged: (b) => setState(() => isMap = b),
-            ),
-            const SizedBox(height: 10),
-            if (!isMap)
-              Row(
+          ),
+          const SizedBox(height: 10),
+          if (!isMap)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     RichText(
@@ -197,7 +200,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               });
                             },
                             style: const TextStyle(
-                              color: Color.fromARGB(255, 70, 2, 187),
+                              color: MyColorPalette.darkGreen,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -205,7 +208,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             alignment: PlaceholderAlignment.middle,
                             child: GestureDetector(
                               onTap: () => print('Icon clicked'),
-                              child: const Icon(Icons.keyboard_arrow_down, size: 20, color: Color.fromARGB(255, 70, 2, 187)),
+                              child: const Icon(Icons.keyboard_arrow_down, size: 20, color: MyColorPalette.darkGreen),
                             ),
                           ),
                         ],
@@ -213,8 +216,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                   ]
               ),
-          ],
-        ),
+            ),
+        ],
       ),
       if (!isMap)
         Expanded(child: StoresList(stores: stockStoresState.stores))
