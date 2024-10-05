@@ -115,16 +115,17 @@ class BigStoreCard extends StatelessWidget {
                       ),
                     ]
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text("Suprise Bag", style: TextStyle(
+                      const Text("Surprise Bag", style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       )),
-                      Text("Recolher hoje 21:30 - 22:00", style: TextStyle(
+                      Text("Recolher hoje ${store.openingRetrievalHours} - ${store.closingRetrievalHours}", style: const TextStyle(
+                        height: 1.2,
                         color: Color.fromARGB(255, 112, 112, 112),
                         fontSize: 12,
                       )),
@@ -133,20 +134,20 @@ class BigStoreCard extends StatelessWidget {
                           Expanded(child:
                           Row(
                             children: [
-                              Icon(Icons.star, color: MyColorPalette.lightGreen, size: 18,),
-                              SizedBox(width: 5),
-                              Text("4,7", style: TextStyle(
+                              const Icon(Icons.star, color: MyColorPalette.lightGreen, size: 16,),
+                              const SizedBox(width: 5),
+                              Text(store.rating.toString().replaceFirst(".", ","), style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
                               )),
-                              SizedBox(
+                              const SizedBox(
                                   height: 18,
                                   child: VerticalDivider(
                                     thickness: 0.35,
                                     color: Colors.grey,
                                   )
                               ),
-                              Text("4,1 Km", style: TextStyle(
+                              const Text("4,1 Km", style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
                               )),
@@ -154,11 +155,11 @@ class BigStoreCard extends StatelessWidget {
                           )
                           ),
                           Align(alignment: Alignment.centerRight, child:
-                          Text("4,99 €", style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17,
-                              color: Color.fromARGB(255, 3, 44, 4)
-                          )),
+                            Text("${store.price.toStringAsFixed(2).replaceFirst(".", ",")} €", style: const TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 17,
+                                color: MyColorPalette.darkGreen
+                            )),
                           )
                         ],
                       )

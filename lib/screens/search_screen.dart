@@ -8,6 +8,7 @@ import 'package:too_good_to_go_clone/screens/search_screen_map.dart';
 import 'package:too_good_to_go_clone/widgets/search_bar.dart';
 
 import '../mycolors/colors.dart';
+import '../widgets/modal_bottom_sheet.dart';
 
 class SearchScreen extends StatefulWidget{
   const SearchScreen({
@@ -17,8 +18,6 @@ class SearchScreen extends StatefulWidget{
   @override
   State<SearchScreen> createState() => _SearchScreenState();
 }
-
-enum OrderedBy { relevancia, distancia, preco, classificacao }
 
 class _SearchScreenState extends State<SearchScreen> {
   bool isMap = false;
@@ -128,86 +127,36 @@ class _SearchScreenState extends State<SearchScreen> {
                       text: TextSpan(
                         children: [
                           const TextSpan(text: "Ordenar por: ", style: TextStyle(
-                              color: Colors.black
+                            color: Colors.black,
+                            fontSize: 15.5,
                           )),
                           TextSpan(
                             text: "Relevância ",
                             recognizer: TapGestureRecognizer()..onTap = () {
-                              showModalBottomSheet(context: context, builder: (BuildContext context){
-                                return Padding(
-                                  padding: const EdgeInsets.all(18.0),
-                                  child: SizedBox(
-                                    height: 200,
-                                    width: MediaQuery.of(context).size.width,
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        children: [
-                                          const Text('Ordenar por', style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20.0,
-                                          ),),
-                                          const Divider(
-                                            height: 20,
-                                            thickness: 0.4,
-                                            color: Colors.grey,
-                                          ),
-                                          RadioListTile<OrderedBy>(
-                                            title: const Text('Relevância'),
-                                            controlAffinity: ListTileControlAffinity.trailing,
-                                            groupValue: _orderBy,
-                                            value: OrderedBy.relevancia,
-                                            onChanged:(OrderedBy? value) { setState(() {
-                                              _orderBy = OrderedBy.relevancia;
-                                            });},
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-                                          ),
-                                          RadioListTile<OrderedBy>(
-                                            title: const Text('Distância'),
-                                            controlAffinity: ListTileControlAffinity.trailing,
-                                            groupValue: _orderBy,
-                                            value: OrderedBy.distancia,
-                                            onChanged:(OrderedBy? value) { setState(() {
-                                              _orderBy = OrderedBy.distancia;
-                                            });},
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-                                          ),
-                                          RadioListTile<OrderedBy>(
-                                            title: const Text('Preço'),
-                                            controlAffinity: ListTileControlAffinity.trailing,
-                                            groupValue: _orderBy,
-                                            value: OrderedBy.preco,
-                                            onChanged:(OrderedBy? value) { setState(() {
-                                              _orderBy = OrderedBy.preco;
-                                            });},
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-                                          ),
-                                          RadioListTile<OrderedBy>(
-                                            title: const Text('Classificação'),
-                                            controlAffinity: ListTileControlAffinity.trailing,
-                                            groupValue: _orderBy,
-                                            value: OrderedBy.classificacao,
-                                            onChanged:(OrderedBy? value) { setState(() {
-                                              _orderBy = OrderedBy.classificacao;
-                                            });},
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-                                          ),
-
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              });
+                              showOrderByBottomModalSheet(context, _orderBy, (OrderedBy selectedOrder) {
+                                  setState(() {
+                                    _orderBy = selectedOrder;
+                                  });
+                                }
+                              );
                             },
                             style: const TextStyle(
                               color: MyColorPalette.darkGreen,
                               fontWeight: FontWeight.bold,
+                              fontSize: 15.5,
                             ),
                           ),
                           WidgetSpan(
                             alignment: PlaceholderAlignment.middle,
                             child: GestureDetector(
-                              onTap: () => print('Icon clicked'),
+                              onTap: () {
+                                showOrderByBottomModalSheet(context, _orderBy, (OrderedBy selectedOrder) {
+                                    setState(() {
+                                      _orderBy = selectedOrder;
+                                    });
+                                  }
+                                );
+                              },
                               child: const Icon(Icons.keyboard_arrow_down, size: 20, color: MyColorPalette.darkGreen),
                             ),
                           ),
