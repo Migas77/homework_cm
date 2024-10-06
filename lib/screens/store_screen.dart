@@ -92,6 +92,7 @@ class StoreScreen extends StatelessWidget {
                         ),
                         Positioned(
                             left: 18.2,
+                            right: 11.8,
                             bottom: 12,
                             child: Row(
                               children: [
@@ -100,11 +101,18 @@ class StoreScreen extends StatelessWidget {
                                   backgroundImage: AssetImage(store.logoImagePath),
                                 ),
                                 const SizedBox(width: 10),
-                                Text(store.name, style: const TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 22,
-                                    color: Colors.white
-                                )),
+                                Expanded(
+                                  child: Text(store.name,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    softWrap: false,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 22,
+                                      color: Colors.white
+                                    )
+                                  ),
+                                ),
                               ],
                             ),
                         ),

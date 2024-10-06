@@ -163,7 +163,7 @@ List<Store> allStoresList = [
 
   // Salva antes que seja tarde
   Store(
-      name: "Vitaminas - Fórum Aveiro",
+      name: "Vitaminas - Fórum Aveiro ",
       storeImagePath: "assets/images/AuchanAveiro.jpg",
       logoImagePath: "assets/images/AuchanLogo.jpg",
       openingRetrievalHours: "21:30",

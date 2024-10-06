@@ -78,6 +78,7 @@ class SmallStoreCard extends StatelessWidget {
                   ),
                   Positioned(
                     left: 10,
+                    right: 0,
                     bottom: 5,
                     child: Row(
                       children: [
@@ -86,11 +87,18 @@ class SmallStoreCard extends StatelessWidget {
                           backgroundImage: AssetImage(store.logoImagePath),
                         ),
                         const SizedBox(width: 10),
-                        Text(store.name, style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.white
-                        )),
+                        Expanded(
+                          child: Text(store.name,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            softWrap: false,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                              color: Colors.white
+                            )
+                          ),
+                        ),
                       ],
                     ),
                   ),
