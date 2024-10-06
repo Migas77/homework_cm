@@ -17,7 +17,9 @@ class Store {
   double rating;
   double price;
   double oldPrice;
+  double distance;
   bool isNews;
+
 
   Store({
     required this.name,
@@ -35,6 +37,7 @@ class Store {
     required this.rating,
     required this.price,
     required this.oldPrice,
+    required this.distance,
     required this.isNews,
   });
 
@@ -67,24 +70,7 @@ List<Store> allStoresList = [
       rating: 3.5,
       price: 2.9,
       oldPrice: 5.2,
-      isNews: false
-  ),
-  Store(
-      name: "Saladas +",
-      storeImagePath: "assets/images/AuchanAveiro.jpg",
-      logoImagePath: "assets/images/AuchanLogo.jpg",
-      openingRetrievalHours: "21:30",
-      closingRetrievalHours: "22:00",
-      address: "Rua São Sebastião n 31",
-      mealTitle: "Surprise Bag Salgados & Doces",
-      mealType: "Pão e Pastelaria",
-      description: "📅 Esta loja poderá estar fechada devido ao feriado nacional ⚠️",
-      top3Highlights: [hQualityPriceRatio, hDeliciousFood, hFriendlyStaff],
-      availableSurpriseBags: 4,
-      last6monthsReviewCount: 290,
-      rating: 4.3,
-      price: 2.99,
-      oldPrice: 9.00,
+      distance: 4.1,
       isNews: false
   ),
   Store(
@@ -103,6 +89,7 @@ List<Store> allStoresList = [
       rating: 4.7,
       price: 5.99,
       oldPrice: 18.00,
+      distance: 1.3,
       isNews: false
   ),
   Store(
@@ -121,6 +108,7 @@ List<Store> allStoresList = [
       rating: 4.6,
       price: 2.99,
       oldPrice: 9.00,
+      distance: 2.7,
       isNews: false
   ),
   Store(
@@ -139,31 +127,14 @@ List<Store> allStoresList = [
       rating: 4.2,
       price: 2.99,
       oldPrice: 9.00,
-      isNews: false
-  ),
-  Store(
-      name: "Pizza Hut - Forum Aveiro",
-      storeImagePath: "assets/images/AuchanAveiro.jpg",
-      logoImagePath: "assets/images/AuchanLogo.jpg",
-      openingRetrievalHours: "22:00",
-      closingRetrievalHours: "23:00",
-      address: "R. do Batalhão de Caçadores 10 2.07, 3810-064 Aveiro, Portugal",
-      mealTitle: "Surprise Bag Média: Pizza à fatia e/ou complementos (Jantar)",
-      mealType: "Refeições",
-      description: "🍕 Aproveita e salva deliciosas fatias de pizza e/ou complementos da Pizza Hut!",
-      top3Highlights: [hQualityPriceRatio, hDeliciousFood, hFriendlyStaff],
-      availableSurpriseBags: 1,
-      last6monthsReviewCount: 15,
-      rating: 3.0,
-      price: 3.99,
-      oldPrice: 8.00,
+      distance: 1.3,
       isNews: false
   ),
 
 
   // Salva antes que seja tarde
   Store(
-      name: "Vitaminas - Fórum Aveiro ",
+      name: "Vitaminas - Fórum Aveiro",
       storeImagePath: "assets/images/AuchanAveiro.jpg",
       logoImagePath: "assets/images/AuchanLogo.jpg",
       openingRetrievalHours: "21:30",
@@ -178,6 +149,7 @@ List<Store> allStoresList = [
       rating: 3.8,
       price: 2.99,
       oldPrice: 9.00,
+      distance: 1.1,
       isNews: false
   ),
   Store(
@@ -196,12 +168,68 @@ List<Store> allStoresList = [
       rating: 3.8,
       price: 2.99,
       oldPrice: 9.00,
-      isNews: true
-      // 1,6 km
+      distance: 1.6,
+      isNews: false
   ),
 
   // Novas Surprise Bags
-
+  Store(
+      name: "Padaria Virgem Maria",
+      storeImagePath: "assets/images/AuchanAveiro.jpg",
+      logoImagePath: "assets/images/AuchanLogo.jpg",
+      openingRetrievalHours: "20:30",
+      closingRetrievalHours: "21:00",
+      address: "R. Fonte do Lugar 4, 3770-056 Oiã, Portugal",
+      mealTitle: "Pastelaria",
+      mealType: "Pão e Pastelaria",
+      description: "🍞 Pães frescos, bolos ou salgados deliciosos são algumas das coisas que podes encontrar nesta Surprise Bag.",
+      top3Highlights: [hQualityPriceRatio, hGoodQuantity, hFastRetrieval],
+      availableSurpriseBags: 1,
+      last6monthsReviewCount: 208,
+      rating: 4.6,
+      price: 2.99,
+      oldPrice: 9.00,
+      distance: 14,
+      isNews: true
+  ),
+  Store(
+      name: "Pizza Hut - Forum Aveiro",
+      storeImagePath: "assets/images/AuchanAveiro.jpg",
+      logoImagePath: "assets/images/AuchanLogo.jpg",
+      openingRetrievalHours: "22:00",
+      closingRetrievalHours: "23:00",
+      address: "R. do Batalhão de Caçadores 10 2.07, 3810-064 Aveiro, Portugal",
+      mealTitle: "Surprise Bag Média: Pizza à fatia e/ou complementos (Jantar)",
+      mealType: "Refeições",
+      description: "🍕 Aproveita e salva deliciosas fatias de pizza e/ou complementos da Pizza Hut!",
+      top3Highlights: [hQualityPriceRatio, hDeliciousFood, hFriendlyStaff],
+      availableSurpriseBags: 1,
+      last6monthsReviewCount: 15,
+      rating: 3.0,
+      price: 3.99,
+      oldPrice: 8.00,
+      distance: 1.5,
+      isNews: true
+  ),
+  Store(
+      name: "Saladas +",
+      storeImagePath: "assets/images/AuchanAveiro.jpg",
+      logoImagePath: "assets/images/AuchanLogo.jpg",
+      openingRetrievalHours: "21:30",
+      closingRetrievalHours: "22:00",
+      address: "Rua São Sebastião n 31",
+      mealTitle: "Surprise Bag Salgados & Doces",
+      mealType: "Pão e Pastelaria",
+      description: "📅 Esta loja poderá estar fechada devido ao feriado nacional ⚠️",
+      top3Highlights: [hQualityPriceRatio, hDeliciousFood, hFriendlyStaff],
+      availableSurpriseBags: 4,
+      last6monthsReviewCount: 290,
+      rating: 4.3,
+      price: 2.99,
+      oldPrice: 9.00,
+      distance: 5.2,
+      isNews: true
+  ),
 
 
 

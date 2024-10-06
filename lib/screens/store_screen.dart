@@ -422,7 +422,8 @@ class StoreScreen extends StatelessWidget {
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.start,
                                             children: [
-                                              Icon(highlight.iconData, size: 32, color: MyColorPalette.darkGreen),
+                                              const SizedBox(width: 3),
+                                              Icon(highlight.iconData, size: 30, color: MyColorPalette.darkGreen),
                                               const SizedBox(width: 18),
                                               Text(highlight.description, style: const TextStyle(
                                                 fontWeight: FontWeight.bold,

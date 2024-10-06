@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:too_good_to_go_clone/mycolors/colors.dart';
 import 'package:too_good_to_go_clone/providers/stock_stores_state.dart';
+import 'package:too_good_to_go_clone/widgets/get_store_list.dart';
 import 'package:too_good_to_go_clone/widgets/search_bar.dart';
-import 'package:too_good_to_go_clone/widgets/small_store_card.dart';
+
+import '../providers/favorite_stores_state.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -13,8 +15,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     StockStoresState stockStoresState = context.watch<StockStoresState>();
-    List<String> titles = ["Recomendações", "Salva antes que seja tarde"];
-    List<int> indexesForTitles = [0, 6, 8];
+    FavoriteStoresState favoritesState = context.watch<FavoriteStoresState>();
+    List<String> titles = ["Recomendações", "Salva antes que seja tarde", "Novas Surprise Bags"];
+    List<int> indexesForTitles = [0, 4, 6, 9];
 
     return SingleChildScrollView(
       child: Column(
@@ -57,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const Text("dentro de 10 km", style: TextStyle(
+                          const Text("dentro de 15 km", style: TextStyle(
                             color: MyColorPalette.darkGreen,
                             fontSize: 14.0,
                           )),
@@ -69,57 +72,18 @@ class HomeScreen extends StatelessWidget {
 
                 const MySearchBar(),
                 const SizedBox(height: 14),
-
-
-
-
               ],
             ),
           ),
 
-          // i want to repeat this a certain number of times
+          // Repeat for all titles and respective stores
           for (int i = 0; i < titles.length; i++) ...[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(titles[i], style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                    ), ),
-                    RichText(
-                      text: const TextSpan(
-                        children: [
-                          TextSpan(text: "Ver tudo ", style: TextStyle(
-                            color: MyColorPalette.darkGreen,
-                            fontWeight: FontWeight.bold,
-                          )),
-                          WidgetSpan(
-                              alignment: PlaceholderAlignment.middle,
-                              child: Icon(Icons.chevron_right, size: 20, color: MyColorPalette.darkGreen)
-                          ),
-                        ],
-                      ),
-                    ),
-                  ]
-              ),
-            ),
-            const SizedBox(height: 5),
-            SizedBox(
-              height: 177,
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 9),
-                scrollDirection: Axis.horizontal,
-                itemCount: stockStoresState.stores.sublist(indexesForTitles[i], indexesForTitles[i + 1]).length,
-                itemBuilder: (BuildContext context, int index) {
-                  return SmallStoreCard(store: stockStoresState.stores.sublist(indexesForTitles[i], indexesForTitles[i + 1])[index]);
-                },
-              ),
-            ),
-            const SizedBox(height: 19),
-          ]
+            ...getStoreList(titles[i], stockStoresState.stores.sublist(indexesForTitles[i], indexesForTitles[i + 1]))
+          ],
 
+          // Favorites
+          if (favoritesState.favoriteStores.isNotEmpty)
+            ...getStoreList("Os teus favoritos", favoritesState.favoriteStores)
         ],
       ),
     );

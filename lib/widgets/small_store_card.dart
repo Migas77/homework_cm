@@ -140,7 +140,7 @@ class SmallStoreCard extends StatelessWidget {
                                   color: Colors.grey,
                                 )
                               ),
-                              const Text("4,1 Km", style: TextStyle(
+                              Text("${store.distance.toStringAsFixed(2).replaceFirst(".", ",")} Km", style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
                               )),

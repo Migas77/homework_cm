@@ -62,43 +62,53 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget screen = _screens[_selectedIndex];
 
     return Scaffold(
-      body: LayoutBuilder(builder: (context, constraints){
-        return SafeArea(child: screen);
-      }),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore_outlined),
-            activeIcon: Icon(Icons.explore),
-            label: 'Descobrir',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined),
-            activeIcon: Icon(Icons.shopping_bag),
-            label: 'Pesquisar',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            activeIcon: Icon(Icons.favorite),
-            label: 'Favoritos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            activeIcon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        type: BottomNavigationBarType.fixed, // disable zoom in animation
-        selectedItemColor: MyColorPalette.darkGreen,
-        unselectedItemColor: Colors.black45,
-        selectedFontSize:12.0,
-        unselectedFontSize: 12.0,
+      body: SafeArea(child: screen),
+
+      // mobile friendly
+      bottomNavigationBar: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 450){
+            return const SizedBox.shrink(); // empty widget
+          }
+
+          return BottomNavigationBar(
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.explore_outlined),
+                activeIcon: Icon(Icons.explore),
+                label: 'Descobrir',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_bag_outlined),
+                activeIcon: Icon(Icons.shopping_bag),
+                label: 'Pesquisar',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.favorite_border),
+                activeIcon: Icon(Icons.favorite),
+                label: 'Favoritos',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline),
+                activeIcon: Icon(Icons.person),
+                label: 'Perfil',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: (index) {
+              setState(() {
+                if(index != 3) {
+                  _selectedIndex = index;
+                }
+              });
+            },
+            type: BottomNavigationBarType.fixed, // disable zoom in animation
+            selectedItemColor: MyColorPalette.darkGreen,
+            unselectedItemColor: Colors.black45,
+            selectedFontSize:12.0,
+            unselectedFontSize: 12.0,
+          );
+        }
       ),
     );
   }
