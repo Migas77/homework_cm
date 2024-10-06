@@ -14,7 +14,7 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FavoriteStoresState appState = context.watch<FavoriteStoresState>();
+    FavoriteStoresState favoritesState = context.watch<FavoriteStoresState>();
 
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints){
@@ -63,10 +63,10 @@ class StoreScreen extends StatelessWidget {
                           top: 40,
                           child: IconButton.filledTonal(
                               icon: Icon(
-                                appState.isFavoriteStore(store) ? Icons.favorite :
+                                favoritesState.isFavoriteStore(store) ? Icons.favorite :
                                 Icons.favorite_border_outlined
                               ),
-                              onPressed: () => appState.toggleFavorite(store),
+                              onPressed: () => favoritesState.toggleFavorite(store),
                               style: IconButton.styleFrom(
                                 backgroundColor: Colors.white.withOpacity(0.7),
                               )

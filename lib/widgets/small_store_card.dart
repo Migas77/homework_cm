@@ -17,7 +17,7 @@ class SmallStoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FavoriteStoresState appState = context.watch<FavoriteStoresState>();
+    FavoriteStoresState favoritesState = context.watch<FavoriteStoresState>();
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 7.6),
@@ -58,9 +58,9 @@ class SmallStoreCard extends StatelessWidget {
                     child: IconButton.filled(
                       padding: const EdgeInsets.all(3),
                       constraints: const BoxConstraints(maxHeight: 36),
-                      onPressed: () => appState.toggleFavorite(store),
+                      onPressed: () => favoritesState.toggleFavorite(store),
                       icon: Icon(
-                        appState.isFavoriteStore(store) ? Icons.favorite : Icons.favorite_border_outlined,
+                        favoritesState.isFavoriteStore(store) ? Icons.favorite : Icons.favorite_border_outlined,
                         color: Colors.white
                       ),
                       // remove splash effect

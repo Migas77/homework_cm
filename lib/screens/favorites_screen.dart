@@ -8,7 +8,7 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FavoriteStoresState appState = context.watch<FavoriteStoresState>();
+    FavoriteStoresState favoritesState = context.watch<FavoriteStoresState>();
 
     return Column(
       children: [
@@ -22,7 +22,7 @@ class FavoritesScreen extends StatelessWidget {
             )),
           ),
         ),
-        Expanded(child: StoresList(stores: appState.favoriteStores))
+        Expanded(child: StoresList(stores: favoritesState.favoriteStores))
       ]
 
     );
