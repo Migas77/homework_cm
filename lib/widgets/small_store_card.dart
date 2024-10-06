@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:too_good_to_go_clone/animations/slide_animations.dart';
 import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
+import 'package:too_good_to_go_clone/widgets/surprise_bag_count_indicator.dart';
 import '../data/stores.dart';
 import '../mycolors/colors.dart';
 import '../screens/store_screen.dart';
@@ -73,24 +74,7 @@ class SmallStoreCard extends StatelessWidget {
                   Positioned(
                     top: 13.5,
                     left: 9,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      height: 20,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: MyColorPalette.lightYellow,
-                        borderRadius: BorderRadius.circular(45),
-                      ),
-                      child: Text(
-                        '${store.availableSurpriseBags} Surprise Bag${store.availableSurpriseBags > 1 ? 's' : ''}',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                          color: MyColorPalette.darkGreen,
-                        ),
-                      ),
-                    )
-
+                    child: StoreIndicators(surpriseBagCount: store.availableSurpriseBags, isNews: store.isNews),
                   ),
                   Positioned(
                     left: 10,

@@ -5,6 +5,7 @@ import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
 import '../data/highlights.dart';
 import '../data/stores.dart';
 import '../mycolors/colors.dart';
+import '../widgets/surprise_bag_count_indicator.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key, required this.store});
@@ -87,24 +88,7 @@ class StoreScreen extends StatelessWidget {
                         Positioned(
                           left: 18,
                           bottom: 90,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
-                            height: 20,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: MyColorPalette.lightYellow,
-                              borderRadius: BorderRadius.circular(45),
-                            ),
-                            child: Text(
-                              '${store.availableSurpriseBags <= 5 ? store.availableSurpriseBags : '5+'} '
-                                  'Surprise Bag${store.availableSurpriseBags > 1 ? 's' : ''}',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                                color: MyColorPalette.darkGreen,
-                              ),
-                            ),
-                          )
+                          child: StoreIndicators(surpriseBagCount: store.availableSurpriseBags, isNews: store.isNews),
                         ),
                         Positioned(
                             left: 18.2,

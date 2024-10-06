@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:too_good_to_go_clone/data/stores.dart';
 import 'package:too_good_to_go_clone/mycolors/colors.dart';
 import 'package:too_good_to_go_clone/providers/stock_stores_state.dart';
 import 'package:too_good_to_go_clone/widgets/search_bar.dart';
@@ -14,8 +13,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     StockStoresState stockStoresState = context.watch<StockStoresState>();
-    List<String> titles = ["Recomendações", "Salva antes que seja tarde", "Novas Surprise Bags"];
-    List<int> indexesForTitles = [0, 4, 7, 10];
+    List<String> titles = ["Recomendações", "Salva antes que seja tarde"];
+    List<int> indexesForTitles = [0, 6, 8];
 
     return SingleChildScrollView(
       child: Column(
@@ -112,7 +111,7 @@ class HomeScreen extends StatelessWidget {
               child: ListView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 9),
                 scrollDirection: Axis.horizontal,
-                itemCount: stockStoresState.stores.length,
+                itemCount: stockStoresState.stores.sublist(indexesForTitles[i], indexesForTitles[i + 1]).length,
                 itemBuilder: (BuildContext context, int index) {
                   return SmallStoreCard(store: stockStoresState.stores.sublist(indexesForTitles[i], indexesForTitles[i + 1])[index]);
                 },

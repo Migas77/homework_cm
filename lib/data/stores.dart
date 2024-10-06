@@ -17,6 +17,7 @@ class Store {
   double rating;
   double price;
   double oldPrice;
+  bool isNews;
 
   Store({
     required this.name,
@@ -34,6 +35,7 @@ class Store {
     required this.rating,
     required this.price,
     required this.oldPrice,
+    required this.isNews,
   });
 
   bool buySurpriseBag() {
@@ -48,6 +50,7 @@ class Store {
 
 // create a list of Stores
 List<Store> allStoresList = [
+  // Recomendações
   Store(
       name: "Auchan - Aveiro",
       storeImagePath: "assets/images/AuchanAveiro.jpg",
@@ -63,7 +66,8 @@ List<Store> allStoresList = [
       last6monthsReviewCount: 150,
       rating: 3.5,
       price: 2.9,
-      oldPrice: 5.2
+      oldPrice: 5.2,
+      isNews: false
   ),
   Store(
       name: "Saladas +",
@@ -74,13 +78,14 @@ List<Store> allStoresList = [
       address: "Rua São Sebastião n 31",
       mealTitle: "Surprise Bag Salgados & Doces",
       mealType: "Pão e Pastelaria",
-      description: "Saladas + é um restaurante de comida saudável, com uma grande variedade de saladas, wraps, sumos naturais e sobremesas.",
+      description: "📅 Esta loja poderá estar fechada devido ao feriado nacional ⚠️",
       top3Highlights: [hQualityPriceRatio, hDeliciousFood, hFriendlyStaff],
       availableSurpriseBags: 4,
       last6monthsReviewCount: 290,
       rating: 4.3,
       price: 2.99,
-      oldPrice: 9.00
+      oldPrice: 9.00,
+      isNews: false
   ),
   Store(
       name: "Wok Home",
@@ -91,13 +96,14 @@ List<Store> allStoresList = [
       address: "R. Direita de Aradas 103, 3810-005 Aveiro, Portugal",
       mealTitle: "Jantar",
       mealType: "Refeições",
-      description: "Wok Home é um restaurante de comida asiática, com uma grande variedade de pratos de wok, sushi, sashimi e sobremesas.",
+      description: "🍣 Se és louco por comida asiática, não podes perder a oportunidade de salvar esta deliciosa surprise bag!",
       top3Highlights: [hQualityPriceRatio, hGoodQuantity, hFastRetrieval],
       availableSurpriseBags: 1,
       last6monthsReviewCount: 213,
       rating: 4.7,
       price: 5.99,
-      oldPrice: 18.00
+      oldPrice: 18.00,
+      isNews: false
   ),
   Store(
       name: "Cidadella",
@@ -108,13 +114,14 @@ List<Store> allStoresList = [
       address: "Via Cândido Teles 7, 3830-126 Ílhavo, Portugal",
       mealTitle: "Pastelaria",
       mealType: "Pão e Pastelaria",
-      description: "Cidadella é uma pastelaria com uma grande variedade de bolos, doces, salgados e bebidas.",
+      description: "🍞 Pães frescos, bolos ou salgados deliciosos são algumas das coisas que podes encontrar nesta Surprise Bag.",
       top3Highlights: [hQualityPriceRatio, hGoodQuantity, hFastRetrieval],
       availableSurpriseBags: 3,
       last6monthsReviewCount: 178,
       rating: 4.6,
       price: 2.99,
-      oldPrice: 9.00
+      oldPrice: 9.00,
+      isNews: false
   ),
   Store(
       name: "Comphy",
@@ -131,7 +138,8 @@ List<Store> allStoresList = [
       last6monthsReviewCount: 33,
       rating: 4.2,
       price: 2.99,
-      oldPrice: 9.00
+      oldPrice: 9.00,
+      isNews: false
   ),
   Store(
       name: "Pizza Hut - Forum Aveiro",
@@ -142,14 +150,18 @@ List<Store> allStoresList = [
       address: "R. do Batalhão de Caçadores 10 2.07, 3810-064 Aveiro, Portugal",
       mealTitle: "Surprise Bag Média: Pizza à fatia e/ou complementos (Jantar)",
       mealType: "Refeições",
-      description: "Pizza Hut é uma cadeia de restaurantes de fast food especializada em pizza. A Pizza Hut é uma das maiores cadeias de restaurantes de fast food do mundo, com mais de 18.000 restaurantes em todo o mundo.",
+      description: "🍕 Aproveita e salva deliciosas fatias de pizza e/ou complementos da Pizza Hut!",
       top3Highlights: [hQualityPriceRatio, hDeliciousFood, hFriendlyStaff],
       availableSurpriseBags: 1,
       last6monthsReviewCount: 15,
       rating: 3.0,
       price: 3.99,
-      oldPrice: 8.00
+      oldPrice: 8.00,
+      isNews: false
   ),
+
+
+  // Salva antes que seja tarde
   Store(
       name: "Vitaminas - Fórum Aveiro",
       storeImagePath: "assets/images/AuchanAveiro.jpg",
@@ -159,12 +171,38 @@ List<Store> allStoresList = [
       address: "R. do Batalhão de Caçadores 10 Store 2.2a, 3810-064 Aveiro, Portugal",
       mealTitle: "Refeição pequena (excepto saladas)",
       mealType: "Refeições",
-      description: "Vitaminas é um restaurante de comida saudável, com uma grande variedade de pratos saudáveis, sumos naturais e sobremesas.",
+      description: "Na Surprise Bag de Vitaminas poderá encontrar qualquer combinação entre sopas, sumos, empadas, quiches, folhados, sobremesas ou outros deliciosos produtos!",
       top3Highlights: [hQualityPriceRatio, hFriendlyStaff, hDeliciousFood],
       availableSurpriseBags: 4,
       last6monthsReviewCount: 47,
       rating: 3.8,
       price: 2.99,
-      oldPrice: 9.00
+      oldPrice: 9.00,
+      isNews: false
   ),
+  Store(
+      name: "Arepate",
+      storeImagePath: "assets/images/AuchanAveiro.jpg",
+      logoImagePath: "assets/images/AuchanLogo.jpg",
+      openingRetrievalHours: "15:00",
+      closingRetrievalHours: "16:00",
+      address: "R. do Srg. Clemente de Morais 45 Rc, 3800-259 Aveiro, Portugal",
+      mealTitle: "Surprise Bag",
+      mealType: "Refeições",
+      description: "🍴Comida confeccionada, arepas, bebidas refrescantes, doces e salgados são algumas das coisas que podes encontrar nesta surprise bag.",
+      top3Highlights: [hDeliciousFood, hFastRetrieval, hFriendlyStaff],
+      availableSurpriseBags: 7,
+      last6monthsReviewCount: 28,
+      rating: 3.8,
+      price: 2.99,
+      oldPrice: 9.00,
+      isNews: true
+      // 1,6 km
+  ),
+
+  // Novas Surprise Bags
+
+
+
+
 ];
