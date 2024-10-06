@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (context, constraints) {
             if (constraints.maxWidth <= 450) {
               return Row(
-                children: [Expanded(child: screen),],
+                children: [Expanded(child: screen)],
               );
             }
             return Row(
