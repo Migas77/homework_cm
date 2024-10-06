@@ -7,7 +7,7 @@ void showOrderByBottomModalSheet(BuildContext context, OrderedBy currentOrder, F
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: SizedBox(
-        height: 200,
+        height: 240,
         width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(
           child: Column(

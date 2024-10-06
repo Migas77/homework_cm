@@ -25,7 +25,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context){
-    StockStoresState stockStoresState = context.watch<StockStoresState>();
+    StockState stockStoresState = context.watch<StockState>();
 
     List<Widget> children = [
       if (isMap)

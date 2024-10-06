@@ -1,37 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:too_good_to_go_clone/data/stores.dart';
+import 'package:too_good_to_go_clone/widgets/headline.dart';
 import 'package:too_good_to_go_clone/widgets/small_store_card.dart';
-
-import '../mycolors/colors.dart';
 
 List<Widget> getStoreList(String title, List<Store> stores){
   return [
-    Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(title, style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18.0,
-            )),
-            RichText(
-              text: const TextSpan(
-                children: [
-                  TextSpan(text: "Ver tudo ", style: TextStyle(
-                    color: MyColorPalette.darkGreen,
-                    fontWeight: FontWeight.bold,
-                  )),
-                  WidgetSpan(
-                      alignment: PlaceholderAlignment.middle,
-                      child: Icon(Icons.chevron_right, size: 20, color: MyColorPalette.darkGreen)
-                  ),
-                ],
-              ),
-            ),
-          ]
-      ),
-    ),
+    Headline(title: title),
     const SizedBox(height: 5),
     SizedBox(
       height: 177,

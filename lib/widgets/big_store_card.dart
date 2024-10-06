@@ -156,7 +156,7 @@ class BigStoreCard extends StatelessWidget {
                                       color: Colors.grey,
                                     )
                                 ),
-                                Text("${store.distance.toStringAsFixed(2).replaceFirst(".", ",")} Km", style: const TextStyle(
+                                Text("${store.distance.toStringAsFixed(1).replaceFirst(".", ",")} Km", style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
                                 )),

@@ -189,7 +189,7 @@ List<Store> allStoresList = [
       rating: 4.6,
       price: 2.99,
       oldPrice: 9.00,
-      distance: 14,
+      distance: 14.1,
       isNews: true
   ),
   Store(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:too_good_to_go_clone/data/stores.dart';
+import '../data/supermarkets.dart';
 
-class StockStoresState with ChangeNotifier {
+class StockState with ChangeNotifier {
 
   final List<Store> stores = allStoresList;
-
-  // Here would go the code to make a reservation
+  final List<Supermarket> supermarkets = allSupermarketsList;
 
 }

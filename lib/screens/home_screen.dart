@@ -6,6 +6,8 @@ import 'package:too_good_to_go_clone/widgets/get_store_list.dart';
 import 'package:too_good_to_go_clone/widgets/search_bar.dart';
 
 import '../providers/favorite_stores_state.dart';
+import '../widgets/headline.dart';
+import '../widgets/supermarket_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -14,7 +16,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    StockStoresState stockStoresState = context.watch<StockStoresState>();
+    StockState stockState = context.watch<StockState>();
     FavoriteStoresState favoritesState = context.watch<FavoriteStoresState>();
     List<String> titles = ["Recomendações", "Salva antes que seja tarde", "Novas Surprise Bags"];
     List<int> indexesForTitles = [0, 4, 6, 9];
@@ -78,12 +80,31 @@ class HomeScreen extends StatelessWidget {
 
           // Repeat for all titles and respective stores
           for (int i = 0; i < titles.length; i++) ...[
-            ...getStoreList(titles[i], stockStoresState.stores.sublist(indexesForTitles[i], indexesForTitles[i + 1]))
+            ...getStoreList(titles[i], stockState.stores.sublist(indexesForTitles[i], indexesForTitles[i + 1]))
+          ],
+
+          if (stockState.supermarkets.isNotEmpty) ...[
+            const Headline(title: "Supermercados"),
+            const SizedBox(height: 5),
+            SizedBox(
+              height: 177,
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 9),
+                scrollDirection: Axis.horizontal,
+                itemCount: stockState.supermarkets.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return SupermarketCard(supermarket: stockState.supermarkets[index]);
+                },
+              ),
+            ),
+            const SizedBox(height: 19),
           ],
 
           // Favorites
           if (favoritesState.favoriteStores.isNotEmpty)
-            ...getStoreList("Os teus favoritos", favoritesState.favoriteStores)
+            ...getStoreList("Os teus favoritos", favoritesState.favoriteStores),
+
+
         ],
       ),
     );
