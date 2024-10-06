@@ -35,7 +35,7 @@ class _SearchScreenState extends State<SearchScreen> {
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            color: Colors.white.withOpacity(0.7),
+            color: isMap ? Colors.white.withOpacity(0.7) : Colors.transparent,
             child: Column(
               children: [
                 const SizedBox(height: 13),
