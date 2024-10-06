@@ -120,10 +120,13 @@ class BigStoreCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const Text("Surprise Bag", style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      )),
+                      Text(store.mealTitle,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        )
+                      ),
                       Text("Recolher hoje ${store.openingRetrievalHours} - ${store.closingRetrievalHours}", style: const TextStyle(
                         height: 1.2,
                         color: Color.fromARGB(255, 112, 112, 112),

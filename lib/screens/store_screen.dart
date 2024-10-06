@@ -150,7 +150,7 @@ class StoreScreen extends StatelessWidget {
                                                 color: MyColorPalette.darkGreen,
                                               )
                                           ),
-                                          TextSpan(text: " ${store.mealType}", style: const TextStyle(
+                                          TextSpan(text: " ${store.mealTitle}", style: const TextStyle(
                                               fontSize: 15,
                                               color: Colors.black
                                           ))
@@ -336,8 +336,8 @@ class StoreScreen extends StatelessWidget {
                                 color: MyColorPalette.grey,
                                 borderRadius: BorderRadius.circular(45),
                               ),
-                              child: const Text('Refeições',
-                                style: TextStyle(
+                              child: Text(store.mealType,
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 13.5,
                                   color: Colors.black,
