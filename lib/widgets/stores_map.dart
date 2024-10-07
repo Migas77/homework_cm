@@ -5,7 +5,10 @@ import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:too_good_to_go_clone/data/stores.dart';
 
+import '../animations/slide_animations.dart';
+import '../mycolors/colors.dart';
 import '../providers/stock_stores_state.dart';
+import '../screens/store_screen.dart';
 
 
 class StoresMap extends StatefulWidget{
@@ -23,11 +26,8 @@ class _StoresMapState extends State<StoresMap> {
   final ClusterManagerId clusterManagerId = const ClusterManagerId("stores");
   late ClusterManager clusterManager;
   final Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
-  MarkerId? selectedMarker;
-  Map<ClusterManagerId, ClusterManager> clusterManagers = <ClusterManagerId, ClusterManager>{};
-  Cluster? lastCluster;
-  static const double _markerOffsetFactor = 0.05;
-
+  bool isButtonVisible = false;
+  VoidCallback? followStoreLink;
 
   static const CameraPosition _kEurope = CameraPosition(
     target: LatLng(49.647714, 4.180428),
@@ -89,33 +89,21 @@ class _StoresMapState extends State<StoresMap> {
           markerId: markerId,
           position: store.location,
           icon: BitmapDescriptor.defaultMarker,
+          infoWindow: InfoWindow(
+            title: store.name,
+            snippet: store.address,
+          ),
           onTap: () {
-            print("Tapped on marker");
-          }
+            setState(() {
+              isButtonVisible = true;
+              followStoreLink = () {
+                Navigator.push(context, createRouteSlideIn(StoreScreen(store: store)));
+              };
+            });
+          },
       );
     });
     setState(() {});
-  }
-
-  void _onMarkerTapped(MarkerId markerId) {
-    final Marker? tappedMarker = markers[markerId];
-    if (tappedMarker != null) {
-      setState(() {
-        final MarkerId? previousMarkerId = selectedMarker;
-        if (previousMarkerId != null && markers.containsKey(previousMarkerId)) {
-          final Marker resetOld = markers[previousMarkerId]!
-              .copyWith(iconParam: BitmapDescriptor.defaultMarker);
-          markers[previousMarkerId] = resetOld;
-        }
-        selectedMarker = markerId;
-        final Marker newMarker = tappedMarker.copyWith(
-          iconParam: BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueGreen,
-          ),
-        );
-        markers[markerId] = newMarker;
-      });
-    }
   }
 
   @override
@@ -146,8 +134,29 @@ class _StoresMapState extends State<StoresMap> {
               },
               myLocationEnabled: true,
               myLocationButtonEnabled: false,
+              mapToolbarEnabled: false,
               markers: Set<Marker>.of(markers.values),
               clusterManagers: <ClusterManager>{clusterManager},
+              onTap: (LatLng latLng) {
+                setState(() {
+                  isButtonVisible = false;
+                });
+              },
+            ),
+            AnimatedPositioned(
+              right: isButtonVisible ? 10 : -100,
+              bottom: 56,
+              duration: const Duration(milliseconds: 500),
+              child: IconButton.filled(
+                onPressed: () => followStoreLink!(),
+                icon: const Icon(Icons.shopping_bag_outlined,
+                  color: MyColorPalette.darkGreen,
+                  size: 20,
+                ),
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.white,
+                ),
+              ),
             ),
             Positioned(
               right: 10,
@@ -164,7 +173,7 @@ class _StoresMapState extends State<StoresMap> {
                   }
                 },
                 icon: const Icon(Icons.near_me_outlined,
-                  color: Colors.green,
+                  color: MyColorPalette.darkGreen,
                   size: 20,
                 ),
                 style: IconButton.styleFrom(
