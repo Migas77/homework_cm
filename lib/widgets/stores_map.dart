@@ -2,6 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:provider/provider.dart';
+import 'package:too_good_to_go_clone/data/stores.dart';
+
+import '../providers/stock_stores_state.dart';
 
 
 class StoresMap extends StatefulWidget{
@@ -16,29 +20,22 @@ class StoresMap extends StatefulWidget{
 class _StoresMapState extends State<StoresMap> {
   final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
   late GoogleMapController _googleMapController;
+  final Set<Marker> markers = {};
+  final ClusterManagerId clusterManagerId = const ClusterManagerId("stores");
+  late ClusterManager clusterManager;
 
   static const CameraPosition _kEurope = CameraPosition(
     target: LatLng(49.647714, 4.180428),
     zoom: 4.2,
   );
 
-  /// Determine the current position of the device.
-  /// ( From Geolocator example: https://pub.dev/packages/geolocator )
-  /// When the location services are not enabled or permissions
-  /// are denied the `Future` will return an error.
   Future<Position> _determinePosition() async {
-    print("DETERMINING POSITION");
     bool serviceEnabled;
     LocationPermission permission;
 
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    print("Service enabled");
-    print(serviceEnabled);
     if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
       return Future.error('Location services are disabled.');
     }
 
@@ -46,22 +43,14 @@ class _StoresMapState extends State<StoresMap> {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
         return Future.error('Location permissions are denied');
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
-
-    print("i'm gonna get it");
 
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
@@ -69,7 +58,31 @@ class _StoresMapState extends State<StoresMap> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    clusterManager = ClusterManager(clusterManagerId: clusterManagerId);
+  }
+
+  void _addStoresToCluster(ClusterManager clusterManager, List<Store> stores) {
+    stores.asMap().forEach((int index, Store store) {
+      debugPrint("calling");
+      markers.add(Marker(
+        clusterManagerId: clusterManagerId,
+        markerId: MarkerId(index.toString()),
+        position: const LatLng(38.7223, -9.1393),
+        icon: BitmapDescriptor.defaultMarker,
+        onTap: () {
+          print("Tapped on marker");
+        }
+      ));
+    });
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    StockState stockState = context.watch<StockState>();
+    _addStoresToCluster(clusterManager, stockState.stores);
 
     return FutureBuilder(
       future: _determinePosition(),
@@ -94,6 +107,8 @@ class _StoresMapState extends State<StoresMap> {
               },
               myLocationEnabled: true,
               myLocationButtonEnabled: false,
+              markers: markers,
+              clusterManagers: <ClusterManager>{clusterManager},
             ),
             Positioned(
               right: 10,
