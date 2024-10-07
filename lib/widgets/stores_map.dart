@@ -20,9 +20,14 @@ class StoresMap extends StatefulWidget{
 class _StoresMapState extends State<StoresMap> {
   final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
   late GoogleMapController _googleMapController;
-  final Set<Marker> markers = {};
   final ClusterManagerId clusterManagerId = const ClusterManagerId("stores");
   late ClusterManager clusterManager;
+  final Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
+  MarkerId? selectedMarker;
+  Map<ClusterManagerId, ClusterManager> clusterManagers = <ClusterManagerId, ClusterManager>{};
+  Cluster? lastCluster;
+  static const double _markerOffsetFactor = 0.05;
+
 
   static const CameraPosition _kEurope = CameraPosition(
     target: LatLng(49.647714, 4.180428),
@@ -60,23 +65,57 @@ class _StoresMapState extends State<StoresMap> {
   @override
   void initState() {
     super.initState();
-    clusterManager = ClusterManager(clusterManagerId: clusterManagerId);
+    clusterManager = ClusterManager(
+      clusterManagerId: clusterManagerId,
+      onClusterTap: (Cluster cluster) async {
+        double zoom = await _googleMapController.getZoomLevel();
+        double newZoom = zoom < 11 ? 11 : zoom + 2;
+        debugPrint('Zoom: $zoom');
+        debugPrint('New Zoom: $newZoom');
+        _googleMapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+          bearing: 0,
+          target: cluster.position,
+          zoom: newZoom,
+        )));
+      },
+    );
   }
 
   void _addStoresToCluster(ClusterManager clusterManager, List<Store> stores) {
     stores.asMap().forEach((int index, Store store) {
-      debugPrint("calling");
-      markers.add(Marker(
-        clusterManagerId: clusterManagerId,
-        markerId: MarkerId(index.toString()),
-        position: const LatLng(38.7223, -9.1393),
-        icon: BitmapDescriptor.defaultMarker,
-        onTap: () {
-          print("Tapped on marker");
-        }
-      ));
+      MarkerId markerId = MarkerId(index.toString());
+      markers[markerId] = Marker(
+          clusterManagerId: clusterManagerId,
+          markerId: markerId,
+          position: store.location,
+          icon: BitmapDescriptor.defaultMarker,
+          onTap: () {
+            print("Tapped on marker");
+          }
+      );
     });
     setState(() {});
+  }
+
+  void _onMarkerTapped(MarkerId markerId) {
+    final Marker? tappedMarker = markers[markerId];
+    if (tappedMarker != null) {
+      setState(() {
+        final MarkerId? previousMarkerId = selectedMarker;
+        if (previousMarkerId != null && markers.containsKey(previousMarkerId)) {
+          final Marker resetOld = markers[previousMarkerId]!
+              .copyWith(iconParam: BitmapDescriptor.defaultMarker);
+          markers[previousMarkerId] = resetOld;
+        }
+        selectedMarker = markerId;
+        final Marker newMarker = tappedMarker.copyWith(
+          iconParam: BitmapDescriptor.defaultMarkerWithHue(
+            BitmapDescriptor.hueGreen,
+          ),
+        );
+        markers[markerId] = newMarker;
+      });
+    }
   }
 
   @override
@@ -107,7 +146,7 @@ class _StoresMapState extends State<StoresMap> {
               },
               myLocationEnabled: true,
               myLocationButtonEnabled: false,
-              markers: markers,
+              markers: Set<Marker>.of(markers.values),
               clusterManagers: <ClusterManager>{clusterManager},
             ),
             Positioned(

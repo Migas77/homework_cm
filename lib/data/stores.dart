@@ -1,3 +1,5 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'highlights.dart';
 
 class Store {
@@ -19,6 +21,7 @@ class Store {
   double oldPrice;
   double distance;
   bool isNews;
+  LatLng location;
 
 
   Store({
@@ -39,6 +42,7 @@ class Store {
     required this.oldPrice,
     required this.distance,
     required this.isNews,
+    required this.location
   });
 
   bool buySurpriseBag() {
@@ -71,7 +75,8 @@ List<Store> allStoresList = [
       price: 2.9,
       oldPrice: 5.2,
       distance: 4.1,
-      isNews: false
+      isNews: false,
+      location: const LatLng(40.62701984203365, -8.644012731406555)
   ),
   Store(
       name: "Wok Home",
@@ -90,7 +95,8 @@ List<Store> allStoresList = [
       price: 5.99,
       oldPrice: 18.00,
       distance: 1.3,
-      isNews: false
+      isNews: false,
+      location: const LatLng(40.62305902395258, -8.645503189079141)
   ),
   Store(
       name: "Cidadella",
@@ -109,7 +115,8 @@ List<Store> allStoresList = [
       price: 2.99,
       oldPrice: 9.00,
       distance: 2.7,
-      isNews: false
+      isNews: false,
+      location: const LatLng(40.604703054383016, -8.663456675588542)
   ),
   Store(
       name: "Comphy",
@@ -128,7 +135,8 @@ List<Store> allStoresList = [
       price: 2.99,
       oldPrice: 9.00,
       distance: 1.3,
-      isNews: false
+      isNews: false,
+      location: const LatLng(40.64280290291505, -8.647049800716227)
   ),
 
 
@@ -150,7 +158,8 @@ List<Store> allStoresList = [
       price: 2.99,
       oldPrice: 9.00,
       distance: 1.1,
-      isNews: false
+      isNews: false,
+      location: const LatLng(40.641013, -8.647013)
   ),
   Store(
       name: "Arepate",
@@ -169,7 +178,8 @@ List<Store> allStoresList = [
       price: 2.99,
       oldPrice: 9.00,
       distance: 1.6,
-      isNews: false
+      isNews: false,
+      location: const LatLng(40.642896143648265, -8.65480531791463)
   ),
 
   // Novas Surprise Bags
@@ -190,7 +200,8 @@ List<Store> allStoresList = [
       price: 2.99,
       oldPrice: 9.00,
       distance: 14.1,
-      isNews: true
+      isNews: true,
+      location: const LatLng(40.54355772506394, -8.540834100720145)
   ),
   Store(
       name: "Pizza Hut - Forum Aveiro",
@@ -209,7 +220,8 @@ List<Store> allStoresList = [
       price: 3.99,
       oldPrice: 8.00,
       distance: 1.5,
-      isNews: true
+      isNews: true,
+      location: const LatLng(40.641105060699395, -8.651134588741783)
   ),
   Store(
       name: "Saladas +",
@@ -228,7 +240,8 @@ List<Store> allStoresList = [
       price: 2.99,
       oldPrice: 9.00,
       distance: 5.2,
-      isNews: true
+      isNews: true,
+      location: const LatLng(40.637053244808634, -8.649993305198697)
   ),
 
 
