@@ -50,12 +50,27 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const SearchScreen(),
-    const FavoritesScreen(),
-    const Placeholder()
-  ];
+  late List<Widget> _screens;
+
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      const HomeScreen(),
+      const SearchScreen(),
+      FavoritesScreen(
+        onButtonPress: _goToHomePage,
+      ),
+      const Placeholder()
+    ];
+  }
+
+  void _goToHomePage(){
+    setState(() {
+      _selectedIndex = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

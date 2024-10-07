@@ -1,10 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:too_good_to_go_clone/mycolors/colors.dart';
 import 'package:too_good_to_go_clone/providers/favorite_stores_state.dart';
 import 'package:too_good_to_go_clone/screens/stores_list.dart';
 
 class FavoritesScreen extends StatelessWidget {
-  const FavoritesScreen({super.key});
+  const FavoritesScreen({super.key, required this.onButtonPress});
+
+  final VoidCallback onButtonPress;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,51 @@ class FavoritesScreen extends StatelessWidget {
             )),
           ),
         ),
-        Expanded(child: StoresList(stores: favoritesState.favoriteStores))
+        if (favoritesState.favoriteStores.isEmpty)
+          Expanded(child:
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 50),
+                  const Text("Ainda não tens favoritos", style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22
+                  )),
+                  const SizedBox(height: 4),
+                  const SizedBox(
+                    width: 300,
+                    child: Text("Clica no ícone do coração numa loja para adicioná-la aos teus favoritos e ela aparecerá aqui.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 15.5
+                      ),
+                    )
+                  ),
+                  const SizedBox(height: 30),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: MyColorPalette.darkGreen,
+                      minimumSize: const Size(200, 0),
+                    ),
+                    onPressed: () => onButtonPress(),
+                    child: const SizedBox(
+                      width: 100,
+                      child: Text("Encontrar uma Surprise Bag",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          height: 1.6,
+                          color: Colors.white,
+                        )
+                      ),
+                    )
+                  )
+                ],
+              )
+
+          ) else
+            Expanded(child: StoresList(stores: favoritesState.favoriteStores))
       ]
 
     );
