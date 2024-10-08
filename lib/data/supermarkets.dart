@@ -20,15 +20,15 @@ List<Supermarket> allSupermarketsList = [
   Supermarket(
     name: "Minipreço",
     locale: "Ílhavo",
-    storeImagePath: "assets/images/AuchanAveiro.jpg",
-    logoImagePath: "assets/images/AuchanLogo.jpg",
+    storeImagePath: "assets/images/miniprecoStore1.jpg",
+    logoImagePath: "assets/images/miniPrecoLogo.png",
     distance: 3.2,
   ),
   Supermarket(
     name: "Minipreço",
     locale: "Aveiro",
-    storeImagePath: "assets/images/AuchanAveiro.jpg",
-    logoImagePath: "assets/images/AuchanLogo.jpg",
+    storeImagePath: "assets/images/miniPrecoStore2.jpg",
+    logoImagePath: "assets/images/miniPrecoLogo.png",
     distance: 4.7,
   ),
 ];

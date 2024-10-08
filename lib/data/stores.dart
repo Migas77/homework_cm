@@ -80,8 +80,8 @@ List<Store> allStoresList = [
   ),
   Store(
       name: "Wok Home",
-      storeImagePath: "assets/images/AuchanAveiro.jpg",
-      logoImagePath: "assets/images/AuchanLogo.jpg",
+      storeImagePath: "assets/images/WokHomeStore.jpeg",
+      logoImagePath: "assets/images/WokHomeLogo.jpg",
       openingRetrievalHours: "23:00",
       closingRetrievalHours: "23:15",
       address: "R. Direita de Aradas 103, 3810-005 Aveiro, Portugal",
@@ -100,8 +100,8 @@ List<Store> allStoresList = [
   ),
   Store(
       name: "Cidadella",
-      storeImagePath: "assets/images/AuchanAveiro.jpg",
-      logoImagePath: "assets/images/AuchanLogo.jpg",
+      storeImagePath: "assets/images/CidadellaStore.jpg",
+      logoImagePath: "assets/images/CidadellaLogo.jpg",
       openingRetrievalHours: "20:00",
       closingRetrievalHours: "21:00",
       address: "Via Cândido Teles 7, 3830-126 Ílhavo, Portugal",
@@ -120,8 +120,8 @@ List<Store> allStoresList = [
   ),
   Store(
       name: "Comphy",
-      storeImagePath: "assets/images/AuchanAveiro.jpg",
-      logoImagePath: "assets/images/AuchanLogo.jpg",
+      storeImagePath: "assets/images/comphyStore.jpg",
+      logoImagePath: "assets/images/comphyLogo.jpg",
       openingRetrievalHours: "14:30",
       closingRetrievalHours: "15:00",
       address: "Centro Comercial Oita, 2.ºpiso, loja 406, Av. Dr. Lourenço Peixinho Loja 406, 3800-140 Aveiro, Portugal",
@@ -143,8 +143,8 @@ List<Store> allStoresList = [
   // Salva antes que seja tarde
   Store(
       name: "Vitaminas - Fórum Aveiro",
-      storeImagePath: "assets/images/AuchanAveiro.jpg",
-      logoImagePath: "assets/images/AuchanLogo.jpg",
+      storeImagePath: "assets/images/vitaminasStore.jpeg",
+      logoImagePath: "assets/images/vitaminasLogo.jpg",
       openingRetrievalHours: "21:30",
       closingRetrievalHours: "22:00",
       address: "R. do Batalhão de Caçadores 10 Store 2.2a, 3810-064 Aveiro, Portugal",
@@ -163,8 +163,8 @@ List<Store> allStoresList = [
   ),
   Store(
       name: "Arepate",
-      storeImagePath: "assets/images/AuchanAveiro.jpg",
-      logoImagePath: "assets/images/AuchanLogo.jpg",
+      storeImagePath: "assets/images/arepateStore.jpg",
+      logoImagePath: "assets/images/arepateLogo.jpg",
       openingRetrievalHours: "15:00",
       closingRetrievalHours: "16:00",
       address: "R. do Srg. Clemente de Morais 45 Rc, 3800-259 Aveiro, Portugal",
@@ -185,8 +185,8 @@ List<Store> allStoresList = [
   // Novas Surprise Bags
   Store(
       name: "Padaria Virgem Maria",
-      storeImagePath: "assets/images/AuchanAveiro.jpg",
-      logoImagePath: "assets/images/AuchanLogo.jpg",
+      storeImagePath: "assets/images/padariaVirgemMariaStore.jpg",
+      logoImagePath: "assets/images/padariaVirgemMariaLogo.jpg",
       openingRetrievalHours: "20:30",
       closingRetrievalHours: "21:00",
       address: "R. Fonte do Lugar 4, 3770-056 Oiã, Portugal",
@@ -205,8 +205,8 @@ List<Store> allStoresList = [
   ),
   Store(
       name: "Pizza Hut - Forum Aveiro",
-      storeImagePath: "assets/images/AuchanAveiro.jpg",
-      logoImagePath: "assets/images/AuchanLogo.jpg",
+      storeImagePath: "assets/images/pizzaHutStore.jpeg",
+      logoImagePath: "assets/images/pizzaHutLogo.png",
       openingRetrievalHours: "22:00",
       closingRetrievalHours: "23:00",
       address: "R. do Batalhão de Caçadores 10 2.07, 3810-064 Aveiro, Portugal",
@@ -225,8 +225,8 @@ List<Store> allStoresList = [
   ),
   Store(
       name: "Saladas +",
-      storeImagePath: "assets/images/AuchanAveiro.jpg",
-      logoImagePath: "assets/images/AuchanLogo.jpg",
+      storeImagePath: "assets/images/saladasPlusStore.jpg",
+      logoImagePath: "assets/images/saladasPlusLogo.jpeg",
       openingRetrievalHours: "21:30",
       closingRetrievalHours: "22:00",
       address: "Rua São Sebastião n 31",
