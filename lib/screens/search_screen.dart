@@ -4,11 +4,11 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:provider/provider.dart';
 import 'package:too_good_to_go_clone/providers/stock_stores_state.dart';
 import 'package:too_good_to_go_clone/screens/stores_list.dart';
-import 'package:too_good_to_go_clone/screens/search_screen_map.dart';
 import 'package:too_good_to_go_clone/widgets/search_bar.dart';
 
 import '../mycolors/colors.dart';
 import '../widgets/modal_bottom_sheet.dart';
+import '../widgets/stores_map.dart';
 
 class SearchScreen extends StatefulWidget{
   const SearchScreen({
@@ -29,7 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
     List<Widget> children = [
       if (isMap)
-        SearchScreenMap(),
+        const StoresMap(),
       Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -131,12 +131,13 @@ class _SearchScreenState extends State<SearchScreen> {
                             fontSize: 16,
                           )),
                           TextSpan(
-                            text: "Relevância ",
+                            text: _orderBy.value,
                             recognizer: TapGestureRecognizer()..onTap = () {
                               showOrderByBottomModalSheet(context, _orderBy, (OrderedBy selectedOrder) {
                                   setState(() {
                                     _orderBy = selectedOrder;
                                   });
+                                  Navigator.pop(context);
                                 }
                               );
                             },
@@ -154,6 +155,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                     setState(() {
                                       _orderBy = selectedOrder;
                                     });
+                                    Navigator.pop(context);
                                   }
                                 );
                               },
